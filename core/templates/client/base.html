@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- web icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.jpg') }}">
+
+
+    <!-- BoxIcons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Css link -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    {% if title %}
+    <title>Inua collective soceity {{title}}</title>
+    {% else %}
+    <title>Inua collective soceity</title>
+    {% endif %}
+</head>
+
+<body>
+    <header>
+        <a href="" class="title">
+            <h1><small class="first-letter">i</small>nua<span><br />collective society</span> </h1>
+        </a>
+        <ul class="navlist">
+            <li><a href="">Home</a></li>
+            <li><a href="">Program</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Event</a></li>
+            <li><a href="">Gallery</a></li>
+        </ul>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <section class="footerSection">
+            <div class="col">
+                <a href='/' class="title">
+                    <h1><small class="first-letter">i</small>nua<span><br />collective society</span> </h1>
+                </a>
+                <p>
+                    is a non-profit organization with
+                    operations in the BC Lower mainland. INUA is a Swahili word which
+                    translates to elevate or uplift.
+                </p>
+            </div>
+            <div class="col">
+                <h3>Office <div class="underline"><span></span></div>
+                </h3>
+                <p>9343 149 street</p>
+                <p>Surrey, BC</p>
+                <p class="email-id">inuacollective@gmail.com</p>
+                <p>+ 1 604-616-5717</p>
+            </div>
+            <div class="col">
+                <h3>Quick Links<div class="underline"><span></span></div>
+                </h3>
+                <ul>
+                    <li>
+                        <Link>Home</Link>
+                    </li>
+                    <li>
+                        <Link>About Us</Link>
+                    </li>
+                    <li>
+                        <Link>Events</Link>
+                    </li>
+                    <li>
+                        <Link>Gallery</Link>
+                    </li>
+                    <li>
+                        <Link>Blog</Link>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="col">
+                <h3>News Letter <div class="underline"><span></span></div>
+                </h3>
+                <form action="">
+                    <i class='bx bxs-envelope'></i>
+                    <input type="email" placeholder="Enter your Email" required />
+                    <button type="submit"><i class='bx bxs-right-arrow-alt'></i></button>
+                </form>
+                <div class="socials">
+                    <i class='bx bxl-facebook'></i>
+                    <i class='bx bxl-linkedin'></i>
+                    <i class='bx bxl-instagram'></i>
+                    <i class='bx bxl-youtube'></i>
+
+                </div>
+
+            </div>
+        </section>
+        <hr />
+
+        <p class="copyright">inua collective society &copy; All right Reserved</p>
+
+
+    </footer>
+</body>
+
+</html>
