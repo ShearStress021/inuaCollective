@@ -9,6 +9,10 @@ readme = "README.md"
 python = "^3.13"
 gunicorn = "^23.0.0"
 flask-sqlalchemy = "^3.1.1"
+flask-wtf = "^1.2.2"
+python-dotenv = "^1.0.1"
+flask-login = "^0.6.3"
+flask-bcrypt = "^1.0.1"
 
 
 [build-system]

@@ -1,7 +1,9 @@
 from core import create_app
+from flask import Flask
 
 
-app = create_app()
+app = Flask(__name__)
+create_app(app)
 
 if __name__ == "__main__":
     app.run()

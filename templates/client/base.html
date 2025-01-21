@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <header>
+    <nav>
         <a href="" class="title">
             <h1><small class="first-letter">i</small>nua<span><br />collective society</span> </h1>
         </a>
@@ -34,7 +34,7 @@
             <li><a href="">Event</a></li>
             <li><a href="">Gallery</a></li>
         </ul>
-    </header>
+    </nav>
     {% block content %}
     {% endblock %}
     <footer>
@@ -100,7 +100,8 @@
         </section>
         <hr />
 
-        <p class="copyright">inua collective society &copy; All right Reserved</p>
+        <p class="copyright">inua collective society <a href="{{ url_for('users.home')}}">&copy;</a> All right Reserved
+        </p>
 
 
     </footer>
