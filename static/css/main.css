@@ -465,6 +465,7 @@ footer {
     padding: 0 0 30px;
     font-size: 0.8rem;
     line-height: 20px;
+    /* margin-top: 100px; */
 }
 
 .footerSection {
@@ -675,6 +676,10 @@ header {
     transition: .2s ease;
 }
 
+.txt {
+    height: 150px;
+}
+
 .inputs:hover,
 .inputs:focus {
     background: rgba(10, 10, 10, 0.25);
@@ -710,35 +715,74 @@ header {
     background: rgba(122, 122, 122, 0.2);
     box-shadow: 1px 5px 7px 1px rgba(122, 122, 122, 0.2);
 }
-/* About us page */
-.aboutUs {
- 
+
+.custom-file {
+    display: flex;
+    margin-bottom: 20px;
 }
+
+.custom-file-label {
+    width: 50%;
+    color: #3d3d3d;
+}
+
+/* About us page */
+.aboutUs {}
 
 .aboutUs h1 {
     color: #494949;
     text-align: center;
-    font-size: 2.7rem; 
+    font-size: 2.7rem;
 
 }
+
 .aboutUsVideo video {
-   margin: 0 auto;
-   display: block;
+    margin: 0 auto;
+    display: block;
 }
+
 .aboutUsVideo {
     text-align: center;
     margin: auto;
 }
+
 .aboutUsVideo p {
     font-size: 1rem;
     color: #646464;
     text-align: center;
 }
+
 .Inua {
     font-size: 1.3rem;
     color: #3d3d3d;
     font-weight: bold;
 }
+
 .ourTeam h1 {
     text-align: center;
+}
+
+/* Client program Section */
+.program-sc {
+    height: 600px;
+    margin: auto;
+
+}
+
+.program-sc h3 {
+    color: #3d3d3d;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.prog-img {
+    width: 100%;
+}
+
+.prog-img img {
+    margin-left: auto;
+    margin-right: auto;
 }

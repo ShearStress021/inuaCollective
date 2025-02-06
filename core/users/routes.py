@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, ProgramForm
 from flask_login import current_user, login_user, login_required
-from core.models import User, db
+from core.models import User, db, Program
 from flask_bcrypt import Bcrypt
+from .utils import create_path
 
 
 bcrypt = Bcrypt()
@@ -50,3 +51,24 @@ def login():
         else:
             flash("Login Unsuccessfull. Please check username and password", "danger")
     return render_template("admin/login.html", title="login", form=form)
+
+
+@users.route("/admin/program", methods=["GET", "POST"])
+@login_required
+def create_program():
+    form = ProgramForm()
+    if request.method == "POST":
+        file = request.files["program_image"]
+        if file:
+            image_path = create_path("programs", file)
+            program = Program(
+                title=form.title.data,
+                description=form.description.data,
+                image_file=image_path,
+                user_id=current_user.id,
+            )
+            db.session.add(program)
+            db.session.commit()
+            return redirect(url_for("users.home"))
+
+    return render_template("admin/create_program.html", form=form)

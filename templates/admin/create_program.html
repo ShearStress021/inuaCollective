@@ -1,0 +1,35 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+
+<section class="login">
+    <form action="" method="post" enctype="multipart/form-data" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-box">
+            <div class="top">
+                <header>Create Program</header>
+            </div>
+
+            <div class="input-box">
+                {{ form.title(class='inputs', placeholder='Program Title') }}
+                <i class='bx bx-pencil'></i>
+            </div>
+            <div class="input-box">
+                {{ form. description(class='inputs txt', placeholder='Program Description') }}
+                <i class='bx bx-text'></i>
+            </div>
+            <div class="custom-file">
+                <label class="custom-file-label" for="image">Program Image:</label>
+                <input type="file" class="custom-file-input" placeholder="Program Image" name="program_image">
+            </div>
+
+            <div class="input-box">
+                {{ form.submit(class='Rbtn') }}
+            </div>
+        </div>
+    </form>
+
+
+
+</section>
+{% endblock %}

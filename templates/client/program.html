@@ -1,0 +1,14 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+<section class="program-sc" style="margin-top: 70px;">
+    <h3>Programs</h3>
+    {% for program in programs %}
+    <div class="prog-img">
+        <img src="{{ url_for('static', filename=program.image_file)}}" alt="">
+    </div>
+    <h3>{{ program.title }}</h3>
+    <p>{{ program.description }}</p>
+    {% endfor %}
+</section>
+{% endblock %}
