@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- web icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.jpg') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Css link -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        referrerpolicy="no-referrer" />
+</head>
+
+
+
+<body>
+    <section id="header">
+        <!-- <img src="{{ url_for('static', filename='images/realL.png') }}" alt=""> -->
+        <a href="">
+            <h1 class="logo"><small class="first-letter">i</small>nua
+            </h1>
+        </a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="{{ url_for('client.home')}}">Home</a></li>
+                <li><a href="{{ url_for('client.about_us')}}">About</a></li>
+                <li><a href="">Programs</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Event</a></li>
+                <li><a href="">Gallery</a></li>
+            </ul>
+        </div>
+        <div class="nav-btn">
+            <a href="{{ url_for('users.login')}}" class="Lbtn white-btn" id="loginBtn">login</a>
+            <a href="{{ url_for('users.register')}}" class="Lbtn" id="registerBtn">Register</a>
+        </div>
+    </section>
+    {% block content %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

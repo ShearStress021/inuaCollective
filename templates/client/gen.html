@@ -1,15 +1,23 @@
-{% extends "client/main.html" %}
+{% extends "client/base.html" %}
 
 {% block content %}
-<section id="hero" class="section-p1">
-    <h1>Inua Collective Society</h1>
-    <p>is a non-profit organization with operations in the BC Lower mainland. INUA is a Swahili word which translates to
-        elevate or uplift. INUA Collective society strives to elevate and up-skill the welfare of BIPOC and other
-        racialized communities in BC lower mainland.</p>
 
-    <a href="">Learn More</a>
+<section class="hero">
+    <div class="hero-text">
+        <h2>INUA COLLECTIVE SOCIETY</h2>
+        <p>is a non-profit organization with
+            operations in the BC Lower mainland. INUA is a Swahili word which
+            translates to elevate or uplift. INUA Collective society strives to
+            elevate and up-skill the welfare of BIPOC and other racialized
+            communities in BC lower mainland.</p>
+        <a class="hero-btn" href="#">Learn More</a>
+    </div>
+    <div class="hero-img">
+        <img src="{{ url_for('static', filename='images/hero.jpg')}}" alt="hero" />
+    </div>
+
 </section>
-<section class="section-p1" id="program">
+<section class="program">
     <h4>Our Programs</h4>
     <div class="main-program">
 
