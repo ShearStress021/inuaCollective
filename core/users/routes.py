@@ -34,7 +34,7 @@ def register():
                 "Your account has been created! You are now able to log in", "success"
             )
             return redirect(url_for("users.home"))
-    return render_template("admin/register.html", form=form)
+    return render_template("register.html", form=form)
 
 
 @users.route("/admin/login", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def login():
             return redirect(next_page) if next_page else redirect(url_for("users.home"))
         else:
             flash("Login Unsuccessfull. Please check username and password", "danger")
-    return render_template("admin/login.html", title="login", form=form)
+    return render_template("login.html", title="login", form=form)
 
 
 @users.route("/admin/program", methods=["GET", "POST"])
@@ -71,4 +71,4 @@ def create_program():
             db.session.commit()
             return redirect(url_for("users.home"))
 
-    return render_template("admin/create_program.html", form=form)
+    return render_template("create_program.html", form=form)

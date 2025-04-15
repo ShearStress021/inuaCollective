@@ -1,14 +1,9 @@
-const bar = document.getElementById('bar')
-const close = document.getElementById('close')
-const nav = document.getElementById('navbar')
+const menuOpenBtn = document.querySelector("#menu-open-button")
+const menuCloseBtn = document.querySelector("#menu-close-button")
 
-if (bar) {
-    bar.addEventListener('click', () => {
-        nav.classList.add('active')
-    })
-}
-if (close) {
-    close.addEventListener('click', () => {
-        nav.classList.remove('active')
-    })
-}
+
+menuOpenBtn.addEventListener('click', () => {
+    document.body.classList.toggle("show-mobile-menu")
+})
+
+menuCloseBtn.addEventListener('click', () => menuOpenBtn.click())
