@@ -64,6 +64,7 @@ def create_program():
             program = Program(
                 title=form.title.data,
                 description=form.description.data,
+                content=form.content.data,
                 image_file=image_path,
                 user_id=current_user.id,
             )

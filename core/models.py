@@ -34,8 +34,10 @@ class User(db.Model, UserMixin):
 class Program(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+
     title = db.Column(db.String(225), unique=True, nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    description = db.Column(db.String(225), unique=True, nullable=False)
+    Content = db.Column(db.Text, nullable=False)
     image_file = db.Column(db.String(255), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
