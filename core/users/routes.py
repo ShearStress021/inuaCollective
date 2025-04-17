@@ -89,3 +89,8 @@ def about_us():
 def program():
     programs = Program.query.all()
     return render_template("program.html", programs=programs)
+
+
+@users.route("/gallery")
+def gallery():
+    return render_template("gallery.html")

@@ -199,6 +199,10 @@ header .navbar {
 
 }
 
+.hero-image-wrapper:hover img {
+    transform: scale(1.2, 1.2);
+}
+
 /* ---------Home section--------- */
 .home-section {
     padding: 120px 0;
@@ -365,6 +369,8 @@ header .navbar {
     color: #3d3d3d;
 }
 
+/* ------------------Program Section ------------------- */
+
 .program-section {
     padding: 120px 0;
     background-color: rgb(255, 240, 222);
@@ -415,6 +421,60 @@ header .navbar {
 .program-section .program-list .program-item:hover .program-title {
     opacity: 1;
 }
+
+/* -------------------Testimonials Section ------------- */
+.testimonial-section {
+    padding: 50px 0 100px;
+    background: #f5e5bd;
+}
+
+.testimonial-section .slide-wrapper {
+    overflow: hidden;
+    margin: 0 60px 50px;
+}
+
+.testimonial-section .testimonial {
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-section .testimonial img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+
+.testimonial-section .testimonial .name {
+    margin-bottom: 16px;
+    font-size: 1.12rem;
+}
+
+.testimonial-section .testimonial .feedback {
+    line-height: 25px;
+}
+
+.testimonial-section .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    background: rgb(230, 183, 98);
+}
+
+.testimonial-section .swipper-slide-btn {
+    color: rgb(230, 183, 98);
+    margin-top: -50px;
+    transition: 0.3s ease;
+}
+
+.testimonial-section .swipper-slide-btn:hover {
+    color: oldlace;
+}
+
 
 /* Responsiveness for max width 900px  */
 @media screen and (max-width: 900px) {
@@ -516,6 +576,18 @@ header .navbar {
     .program-section .program-list {
         grid-template-columns: repeat(1, 1fr);
         justify-items: center;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .testimonial-section .slidder-wrapper {
+        margin: 0 0 30px;
+    }
+
+    .testimonial-section .swipper-slide-btn {
+        display: none;
     }
 
 }

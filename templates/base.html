@@ -17,6 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inua collective society</title>
 
+    <!-- Link for Swipper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <!-- Link For awesome fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -59,7 +62,7 @@
                     <a href="" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Gallery</a>
+                    <a href="{{ url_for('users.program')}}" class="nav-link">Gallery</a>
                 </li>
             </ul>
             <button class="fas fa-bars" id="menu-open-button"></button>
@@ -68,6 +71,9 @@
     {% block content %}
     {% endblock %}
 
+    <!-- script Swipper Link -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Js Link -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
