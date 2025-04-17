@@ -1,6 +1,6 @@
 from flask import Flask
 from .users.routes import users, bcrypt
-from .client.routes import client
+
 from .config import Config
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
@@ -18,7 +18,6 @@ def create_app(app) -> None:
 
     create_db(app)
     app.register_blueprint(users)
-    app.register_blueprint(client)
 
     return app
 

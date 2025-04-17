@@ -3,11 +3,16 @@
 {% block content %}
 
 <section class="program-section">
+    <h2 class="section-title">Programs</h2>
     <div class="section-content">
-        <ul class="menu-list">
-            <li class="menu-item">
-
-            </li>
+        <ul class="program-list">
+            {% for program in programs%}
+            <a class="program-item" href="">
+                <img class="program-image" src="{{ url_for('static', filename=program.image_file)}}" alt="">
+                <h3 class="program-title">{{ program.title }}</h3>
+                <!-- <p class="title-description">{{ program.description }}</p> -->
+            </a>
+            {% endfor %}
         </ul>
 
     </div>

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 
 * {
     margin: 0;
@@ -77,7 +79,7 @@ header .navbar {
 .navbar .nav-logo {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 1px;
     text-align: center;
     line-height: 1rem;
 
@@ -90,7 +92,7 @@ header .navbar {
 }
 
 .navbar .nav-logo img {
-    width: 25px;
+    width: 28px;
 
 }
 
@@ -119,7 +121,7 @@ header .navbar {
     font-size: 0.8rem;
     font-weight: 400;
     color: #4e4e4e;
-    font-family: "Miniver", cursive
+    font-family: "Dancing Script", cursive;
 }
 
 .navbar .nav-menu {
@@ -150,6 +152,7 @@ header .navbar {
 .hero-section {
     min-height: 100vh;
     background: var(--primary-color);
+
 }
 
 .hero-section .section-content {
@@ -199,6 +202,7 @@ header .navbar {
 /* ---------Home section--------- */
 .home-section {
     padding: 120px 0;
+
     background-color: rgb(255, 240, 222);
 }
 
@@ -230,6 +234,11 @@ header .navbar {
 .home-section .home-details {
     max-width: 50%;
 
+
+}
+
+.home-section .home-details .button {
+    text-align: center;
 }
 
 .home-section .home-details .button {
@@ -356,6 +365,56 @@ header .navbar {
     color: #3d3d3d;
 }
 
+.program-section {
+    padding: 120px 0;
+    background-color: rgb(255, 240, 222);
+    color: #4e4e4e;
+}
+
+.program-section .program-list {
+    padding-left: 35px;
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.program-section .program-list .program-item {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.program-section .program-list .program-item .program-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    color: rgb(226, 225, 225);
+    opacity: 0;
+    font-size: var(1.2rem);
+}
+
+.program-section .program-list .program-item .program-image {
+    max-width: 90%;
+    width: 100%;
+    transition: filter 0.3s ease;
+    object-fit: contain;
+}
+
+.program-section .program-list .program-item:hover .program-image {
+    filter: blur(4px) brightness(0.7);
+}
+
+.program-section .program-list .program-item:hover .program-title {
+    opacity: 1;
+}
 
 /* Responsiveness for max width 900px  */
 @media screen and (max-width: 900px) {
@@ -395,7 +454,7 @@ header .navbar {
     .navbar .nav-menu {
         display: block;
         position: fixed;
-        background: var(--white-color);
+        background: rgb(235, 230, 222);
         left: -300px;
         top: 0;
         height: 100%;
@@ -438,7 +497,7 @@ header .navbar {
 
     .home-section .section-content {
         gap: 70px;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .home-section .home-image-wrapper .home-image {
@@ -449,7 +508,14 @@ header .navbar {
     }
 
     .home-section .home-details .button {
-        align-items: center;
+        display: block;
+        margin: 1rem auto;
+        width: fit-content;
+    }
+
+    .program-section .program-list {
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
     }
 
 }

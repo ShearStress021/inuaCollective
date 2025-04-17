@@ -10,10 +10,7 @@ bcrypt = Bcrypt()
 
 users = Blueprint("users", __name__)
 
-
-@users.route("/admin")
-def home() -> str:
-    return render_template("client/home.html")
+# admin section
 
 
 @users.route("/admin/register", methods=["GET", "POST"])
@@ -33,14 +30,14 @@ def register():
             flash(
                 "Your account has been created! You are now able to log in", "success"
             )
-            return redirect(url_for("users.home"))
+            return redirect(url_for("users.program"))
     return render_template("register.html", form=form)
 
 
 @users.route("/admin/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for("users.home"))
+        return redirect(url_for("users.create_program"))
     form = LoginForm()
     if form.validate_on_submit():
         admin = User.query.filter_by(username=form.username.data).first()
@@ -73,3 +70,22 @@ def create_program():
             return redirect(url_for("users.home"))
 
     return render_template("create_program.html", form=form)
+
+
+# users view
+
+
+@users.route("/")
+def home():
+    return render_template("home.html")
+
+
+@users.route("/about")
+def about_us():
+    return render_template("client/aboutus.html")
+
+
+@users.route("/programs")
+def program():
+    programs = Program.query.all()
+    return render_template("program.html", programs=programs)

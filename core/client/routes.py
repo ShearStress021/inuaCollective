@@ -18,4 +18,4 @@ def about_us():
 def program():
     programs = Program.query.all()
 
-    return render_template("client/program.html", programs=programs)
+    return render_template("program.html", programs=programs)
