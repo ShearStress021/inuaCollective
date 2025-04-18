@@ -156,6 +156,7 @@ header .navbar {
     background-repeat: no-repeat;
     height: 400px;
     background-position: center;
+    position: relative;
     /* centers the image *
     /* background: var(--primary-color); */
 }
@@ -173,15 +174,22 @@ header .navbar {
 }
 
 .hero-section .hero-details {
-    text-align: center;
+    /* text-align: center; */
+
 
 }
 
 .hero-section .hero-details .title {
+    position: absolute;
     font-size: 3rem;
     color: white;
     font-family: "Roboto", sans-serif;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    top: 35%;
+    left: 30%;
+
+
 }
 
 .hero-section .hero-details .description {
