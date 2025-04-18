@@ -80,11 +80,6 @@ def home():
     return render_template("home.html")
 
 
-@users.route("/about")
-def about_us():
-    return render_template("client/aboutus.html")
-
-
 @users.route("/programs")
 def program():
     programs = Program.query.all()
@@ -94,3 +89,8 @@ def program():
 @users.route("/gallery")
 def gallery():
     return render_template("gallery.html")
+
+
+@users.route("/about")
+def about():
+    return render_template("about.html")

@@ -86,7 +86,7 @@ header .navbar {
 }
 
 .navbar .nav-logo div {
-    background-color: oldlace;
+    background-color: rgb(250, 247, 241);
     padding: 6px;
     border-radius: .5rem;
 }
@@ -151,29 +151,46 @@ header .navbar {
 
 .hero-section {
     min-height: 100vh;
-    background: var(--primary-color);
-
+    background-image: url("../images/hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    background-position: center;
+    /* centers the image *
+    /* background: var(--primary-color); */
 }
 
 .hero-section .section-content {
     display: flex;
     align-items: center;
     min-height: 100vh;
+    height: 400px;
     color: #666;
-    justify-content: space-between;
+
+
+
+
+}
+
+.hero-section .hero-details {
+    text-align: center;
+
 }
 
 .hero-section .hero-details .title {
-    font-size: 2.23rem;
-    color: #4e4e4e;
+    font-size: 3rem;
+    color: white;
     font-family: "Roboto", sans-serif;
-
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero-section .hero-details .description {
     max-width: 70%;
     margin: 24px 0 40px;
-    font-size: 1.12rem;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    margin: auto;
 }
 
 .hero-section .hero-details .button {
@@ -184,6 +201,7 @@ header .navbar {
     background-color: rgb(230, 183, 98);
     font-weight: 600;
     transition: 0.3s ease;
+    margin-top: 40px;
 
 }
 
@@ -478,7 +496,7 @@ header .navbar {
 /* -----------Gallery Section------------ */
 .gallery-section {
     padding: 50px 0 100px;
-    background: oldlace;
+    background: rgb(252, 246, 237);
 }
 
 .gallery-section .gallery-list {
