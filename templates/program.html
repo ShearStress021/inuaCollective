@@ -12,7 +12,7 @@
 
                 <a class="program-content">
                     <h3 class="program-title">{{ program.title }}</h3>
-                    <p class="program-content">{{ program.content }}</p>
+                    <p class="program-content">{{ program.content|truncatewords(20) }}</p>
                 </a>
             </div>
             {% endfor %}
