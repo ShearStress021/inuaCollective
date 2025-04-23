@@ -18,6 +18,7 @@ def create_app(app) -> None:
 
     create_db(app)
     app.register_blueprint(users)
+    app.jinja_env.filters["truncatewords"] = truncate_words
 
     return app
 
@@ -25,3 +26,8 @@ def create_app(app) -> None:
 def create_db(app):
     with app.app_context():
         db.create_all()
+
+
+def truncate_words(s, num_words) -> str:
+    words = s.split()
+    return " ".join(words[:num_words]) + ("..." if len(words) > num_words else "")

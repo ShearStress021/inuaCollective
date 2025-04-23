@@ -5,15 +5,18 @@
 <section class="program-section">
     <h2 class="section-title">Programs</h2>
     <div class="section-content">
-        <ul class="program-list">
+        <div class="program-list">
             {% for program in programs%}
-            <a class="program-item" href="">
+            <div class="program-item">
                 <img class="program-image" src="{{ url_for('static', filename=program.image_file)}}" alt="">
-                <h3 class="program-title">{{ program.title }}</h3>
-                <!-- <p class="title-description">{{ program.description }}</p> -->
-            </a>
+
+                <a class="program-content">
+                    <h3 class="program-title">{{ program.title }}</h3>
+                    <p class="program-content">{{ program.content }}</p>
+                </a>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
 
     </div>
 </section>
