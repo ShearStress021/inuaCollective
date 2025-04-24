@@ -486,6 +486,7 @@ header .navbar {
 }
 
 .testimonial-section .testimonial {
+    user-select: none;
     display: flex;
     flex-direction: column;
     padding: 35px;
@@ -554,6 +555,106 @@ header .navbar {
 
 .gallery-section .gallery-item:hover .gallery-image {
     transform: scale(1.3);
+}
+
+/* ----------------About css------------ */
+.contact-section {
+    padding: 50px 0 100px;
+    background: #f5e5bd;
+}
+
+.contact-section .section-content {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
+.contact-section .contact-info-list .contact-info {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.contact-section .contact-info-list .contact-info i {
+    font-size: 1.12rem;
+
+}
+
+.contact-section .contact-form {
+    max-width: 50%;
+}
+
+.contact-section .contact-form .form-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 12px;
+    outline: none;
+    margin-bottom: 16px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #666;
+}
+
+.contact-section .contact-form .form-input:focus {
+    border-color: orange;
+}
+
+.contact-section .contact-form textarea {
+    height: 100px;
+    padding: 12px;
+    resize: vertical;
+
+}
+
+.contact-section .contact-form .submit-button {
+    padding: 10px 26px;
+    margin-top: 10px;
+    color: #252525;
+    font-size: 1.12rem;
+    font-weight: 500;
+    background: rgb(230, 183, 98);
+    border-radius: 30px;
+    border: 1px solid rgb(230, 183, 98);
+    transition: 0.3s ease;
+}
+
+.contact-section .contact-form .submit-button:hover {
+    color: rgb(230, 183, 98);
+    background: transparent;
+}
+
+/* ---------------Footer section----------0 */
+.footer-section {
+    padding: 20px 0;
+    background: #272727;
+}
+
+.footer-section .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-section .social-link-list {
+    display: flex;
+    gap: 25px;
+
+}
+
+.footer-section .social-link-list .social-link {
+    font-size: 1.5rem;
+}
+
+.footer-section .social-link-list .social-link:hover {
+    color: rgb(230, 183, 98);
+}
+
+.footer-section :where(.copyright-text, .social-link) {
+    color: #fff;
+    transition: 0.2s ease;
 }
 
 /* Responsiveness for max width 900px  */
@@ -627,7 +728,8 @@ header .navbar {
     }
 
     .hero-section .hero-details :is(.description),
-    .home-section .home-details {
+    .home-section .home-details,
+    .contact-section .contact-form {
         max-width: 100%;
     }
 
@@ -662,6 +764,11 @@ header .navbar {
         width: calc(100% / 2 - 30px);
     }
 
+    .contact-section .section-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 @media screen and (max-width: 640px) {
@@ -681,6 +788,11 @@ header .navbar {
 
     .gallery-section .gallery-list .gallery-item {
         width: 100%;
+    }
+
+    .footer-section .section-content {
+        flex-direction: column;
+        gap: 20px;
     }
 
 }
