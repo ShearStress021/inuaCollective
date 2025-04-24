@@ -66,7 +66,8 @@ header {
     position: fixed;
     width: 100%;
     z-index: 5;
-    background: var(--primary-color);
+    background: rgb(252, 246, 237)
+        /* background: var(--primary-color); */
 }
 
 header .navbar {
@@ -86,7 +87,7 @@ header .navbar {
 }
 
 .navbar .nav-logo div {
-    background-color: rgb(250, 247, 241);
+    background-color: var(--primary-color);
     padding: 6px;
     border-radius: .5rem;
 }
@@ -399,7 +400,7 @@ header .navbar {
 
 .program-section {
     padding: 120px 0;
-    background-color: rgb(255, 240, 222);
+    background: rgb(252, 246, 237);
     color: #4e4e4e;
 }
 
