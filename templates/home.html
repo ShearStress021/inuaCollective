@@ -1,5 +1,99 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% include 'hero.html' %}
+<main>
+    <section class="hero-section">
+        <div class="section-content">
+            <div class="hero-details">
+                <h2 class="title">
+                    Inua Collective Society
+                </h2>
+                <p>INUA COLLECTIVE SOCIETY
+                    INUA Collective Society is a non-profit organization with
+                    operations in the BC Lower mainland. </p>
+
+                <a href="#" class="buthon learn-more">Learn More</a>
+            </div>
+            <!-- <div class="hero-image-wrapper">
+                <img src="{{ url_for('static', filename='images/hero.jpg')}}" </div>
+            </div> -->
+    </section>
+
+
+    <section class="home-section">
+        <h2 class="section-title">What we do</h2>
+        <div class="section-content">
+            <div class="home-content">
+                <div class="home-image-wrapper">
+                    <img class="home-image" src="{{ url_for('static', filename=program.image_file)}}">
+                </div>
+                <div class="home-details">
+                    <h2 class="home-title">
+                        {{ program.title }}
+                    </h2>
+                    <p class="text">
+                        {{ program.content|truncatewords(40)}}
+                    </p>
+
+                    <a class="button programs" href="{{ url_for('users.program')}}">More Programs</a>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="section-content">
+            <div class="slider-container swiper">
+                <div class="slider-wrapper">
+                    <ul class="testimonials-list swiper-wrapper">
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image1.jpg')}}" alt="">
+                            <h3 class="name">Laban kuria</h3>
+                            <i class="feedback">INUA has truly changed the lives of so many young people in our
+                                community. My son found direction and confidence through their mentorship program.</i>
+                        </li>
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image2.jpg')}}" alt="">
+                            <h3 class="name">Kimani Ngunjiri</h3>
+                            <i class="feedback">The school tour was inspiring. Our students came back motivated and more
+                                aware of their potential. Thank you, INUA!</i>
+                        </li>
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image3.jpg')}}" alt="">
+                            <h3 class="name">Willian Ruto</h3>
+                            <i class="feedback">"As an artist, I had never had access to workshops like this before.
+                                INUA gave me tools, exposure, and belief in my work.</i>
+                        </li>
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image4.jpg')}}" alt="">
+                            <h3 class="name">Omollo Otiende</h3>
+                            <i class="feedback">"What stood out to me most was how inclusive and welcoming the entire
+                                team was. It feels like a space where everyone belongs.</i>
+                        </li>
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image5.jpg')}}" alt="">
+                            <h3 class="name">Linus Kakai</h3>
+                            <i class="feedback">"INUA isn’t just an organization—it’s a movement. It brings hope,
+                                creativity, and unity to our community."</i>
+                        </li>
+                        <li class="testimonial swiper-slide">
+                            <img src="{{ url_for('static', filename='images/image6.jpg')}}" alt="">
+                            <h3 class="name">Wafula Chebukati</h3>
+                            <i class="feedback">"Volunteering with INUA has been one of the most rewarding experiences
+                                of my life. You can feel the impact every single day.</i>
+                        </li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swipper-slide-btn swiper-button-prev"></div>
+                    <div class="swipper-slide-btn swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
 {% endblock %}

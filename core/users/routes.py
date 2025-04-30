@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from .forms import RegistrationForm, LoginForm, ProgramForm
-from flask_login import current_user, login_user, login_required
-from core.models import User, db, Program
+from .forms import RegistrationForm, LoginForm, ProgramForm, BlogForm
+from flask_login import current_user, login_user, login_required, logout_user
+from core.models import User, db, Program, Blog
 from flask_bcrypt import Bcrypt
 from .utils import create_path
 
@@ -60,16 +60,41 @@ def create_program():
             image_path = create_path("programs", file)
             program = Program(
                 title=form.title.data,
-                description=form.description.data,
                 content=form.content.data,
                 image_file=image_path,
                 user_id=current_user.id,
             )
             db.session.add(program)
             db.session.commit()
-            return redirect(url_for("users.home"))
+            return redirect(url_for("users.program"))
 
     return render_template("create_program.html", form=form)
+
+
+@users.route("/admin/blog", methods=["GET", "POST"])
+@login_required
+def create_blog():
+    form = BlogForm()
+    if request.method == "POST":
+        file = request.files["blog_image"]
+        if file:
+            image_path = create_path("blog", file)
+            blog = Blog(
+                title=form.title.data,
+                content=form.content.data,
+                image_file=image_path,
+                user_id=current_user.id,
+            )
+            db.session.add(blog)
+            db.session.commit()
+            return redirect(url_for("users.blog"))
+    return render_template("create_blog.html", form=form)
+
+
+@users.route("/admin/logout")
+def log_out():
+    logout_user()
+    return redirect(url_for("users.home"))
 
 
 # users view
@@ -77,7 +102,8 @@ def create_program():
 
 @users.route("/")
 def home():
-    return render_template("home.html")
+    program = Program.query.first()
+    return render_template("home.html", program=program)
 
 
 @users.route("/programs")
@@ -94,3 +120,13 @@ def gallery():
 @users.route("/about")
 def about():
     return render_template("about.html")
+
+
+@users.route("/blog")
+def blog():
+    return render_template("blog.html")
+
+
+@users.route("/event")
+def event():
+    return render_template("event.html")

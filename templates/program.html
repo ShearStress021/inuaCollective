@@ -4,6 +4,13 @@
 
 <section class="program-section">
     <h2 class="section-title">Programs</h2>
+    {% if current_user.is_authenticated %}
+    <div class="create_program">
+        <a href="{{ url_for('users.create_program')}}">create Program</a>
+        <i class="fa-solid fa-plus"></i>
+    </div>
+
+    {% endif %}
     <div class="section-content">
         <div class="program-list">
             {% for program in programs %}
@@ -16,7 +23,6 @@
                     <h3 class="program-title">{{ program.title }}</h3>
                     <p class="program-text">{{ program.content|truncatewords(20) }}</p>
                 </a>
-
             </div>
             {% endfor %}
         </div>

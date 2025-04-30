@@ -36,7 +36,7 @@
         <nav class="navbar section-content">
             <a href="" class="nav-logo">
                 <div>
-                    <img src="{{ url_for('static', filename='images/pengbg.png') }}" alt="inua logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo">
                 </div>
                 <div class="logo-text">
                     <span class="title-name">Inua</span> </br>
@@ -56,14 +56,20 @@
                     <a href="{{ url_for('users.program')}}" class="nav-link">Programs</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Blog</a>
+                    <a href="{{ url_for('users.blog')}}" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Events</a>
+                    <a href="{{ url_for('users.event')}}" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('users.gallery')}}" class="nav-link">Gallery</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{{ url_for('users.log_out')}}" class="nav-link">Log Out</a>
+                </li>
+                {% endif %}
+
             </ul>
             <button class="fas fa-bars" id="menu-open-button"></button>
         </nav>

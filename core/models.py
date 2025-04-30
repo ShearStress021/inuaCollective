@@ -35,10 +35,44 @@ class Program(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(225), unique=True, nullable=False)
-    description = db.Column(db.String(225), unique=True, nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_file = db.Column(db.String(255), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
-        return f"User({self.title})"
+        return f"Program ({self.title})"
+
+
+class Blog(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(225), unique=True, nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    image_file = db.Column(db.String(255), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __repr__(self):
+        return f"Blog ({self.title})"
+
+
+class Gallery(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image_file = db.Column(db.String(255), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+
+class Testimonial(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=True, nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    profile_pic = db.Column(db.String(255), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __repr__(self):
+        return f"Testimonial ({self.name})"
+
+
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image_file = db.Column(db.String(255), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)

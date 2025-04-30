@@ -66,17 +66,9 @@ header {
     position: fixed;
     width: 100%;
     z-index: 5;
-    /* background: rgb(252, 246, 237) */
+
 }
 
-/* header {
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("../images/hero.jpg");
-    background-position: center;
-    background-size: cover;
-    position: relative;
-} */
 
 header .navbar {
     display: flex;
@@ -115,7 +107,7 @@ header .navbar {
 .navbar .nav-logo .title-name {
     /* color: var(--dark-color);
      */
-    color: white;
+    color: rgb(230, 183, 98);
     font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -130,7 +122,7 @@ header .navbar {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
-    color: white;
+    color: rgb(230, 183, 98);
     font-family: "Dancing Script", cursive;
 }
 
@@ -148,8 +140,7 @@ header .navbar {
 .navbar .nav-menu .nav-link {
     padding: 10px 18px;
     font-size: 1.12rem;
-    /* color: var(--white-color); */
-    color: var(--white-color);
+    color: rgb(230, 183, 98);
     transition: 0.3s ease;
     border-radius: 30px;
 
@@ -174,8 +165,6 @@ header .navbar {
     background-repeat: no-repeat;
     height: 400px;
     background-position: center;
-    /* centers the image *
-    /* background: var(--primary-color); */
     position: relative;
 }
 
@@ -217,6 +206,7 @@ header .navbar {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     margin: auto;
     margin-bottom: 20px;
+    text-transform: lowercase;
 }
 
 .hero-section .hero-details .learn-more {
@@ -254,38 +244,58 @@ header .navbar {
 
 /* ---------Home section--------- */
 .home-section {
-    padding: 120px 0;
-
+    padding: 10px 0;
     background-color: rgb(255, 240, 222);
 }
 
 .home-section .section-content {
+    margin: auto;
+    border-radius: 15px;
+}
+
+.home-section .home-content {
     display: flex;
-    gap: 50px;
+    border-radius: 15px;
     align-items: center;
-    justify-content: space-between;
+    padding: 0 25px;
+    gap: 70px;
+    margin-bottom: 30px;
+
+}
+
+
+.home-section .home-image-wrapper {
+    width: 420px;
+    overflow: hidden;
+    height: auto;
+    height: 270px;
+    border-radius: 10px;
+
 }
 
 .home-section .home-image-wrapper .home-image {
-    width: 400px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-
 }
 
-.home-section .home-details .section-title {
+.home-section .home-details .home-title {
     padding: 0;
+
+
 }
 
 .home-section .home-details .text {
     line-height: 30px;
-    margin: 50px 0 30px;
-    text-align: center;
+    margin-top: 10px;
     font-size: 1.12;
     color: #4e4e4e;
+    margin-bottom: 20px;
 }
 
 .home-section .home-details {
     max-width: 50%;
+    flex: 1;
 
 
 }
@@ -424,6 +434,28 @@ header .navbar {
     padding: 120px 0;
     background: rgb(252, 246, 237);
     color: #4e4e4e;
+    max-height: 100vh;
+    position: relative;
+    margin: auto;
+
+}
+
+.program-section .create_program {
+    position: absolute;
+    padding: 20px 36px;
+    background: rgb(230, 183, 98);
+    margin-bottom: 60px;
+    display: inline-block;
+    top: 30%;
+    right: 5%;
+    transform: translate(-20%, -10%);
+    border-radius: 10px;
+}
+
+.program-section .create_program a {
+    text-decoration: none;
+    color: #4e4e4e;
+    margin-right: 10px;
 }
 
 .program-section .program-list {
@@ -447,6 +479,8 @@ header .navbar {
 
 }
 
+
+
 .program-section .program-image img {
     width: 100%;
     aspect-ratio: 16/9;
@@ -462,6 +496,8 @@ header .navbar {
     padding: 10px 25px 25px;
 
 }
+
+
 
 .program-section .program-content .program-title {
     color: #111111;
@@ -613,6 +649,43 @@ header .navbar {
 }
 
 /* ----------------About css------------ */
+.mission-section {
+    padding: 50px 0 100px;
+    background: rgb(247, 228, 195);
+}
+
+.guiding-list {
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+
+}
+
+.guiding-item {
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    padding: 20px 12px;
+    margin-bottom: 1%;
+    box-sizing: border-box;
+}
+
+.guiding-item h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.guiding-item p {
+    text-align: center;
+    /* max-width: 80%; */
+}
+
+.guiding-item ul li {
+    text-align: center;
+}
+
 .contact-section {
     padding: 50px 0 100px;
     background: #f5e5bd;
@@ -681,6 +754,8 @@ header .navbar {
     background: transparent;
 }
 
+
+
 /* ---------------Footer section----------0 */
 .footer-section {
     padding: 20px 0;
@@ -746,7 +821,7 @@ header .navbar {
     }
 
     .navbar #menu-open-button {
-        color: #4e4e4e;
+        color: var(--white-color);
     }
 
     .navbar .nav-menu {
@@ -776,13 +851,6 @@ header .navbar {
         font-size: 1.5rem;
     }
 
-    .hero-section .section-content {
-        gap: 50px;
-        text-align: center;
-        flex-direction: column-reverse;
-        justify-content: center;
-        padding: 30px 20px 20px;
-    }
 
     .hero-section .hero-details :is(.description),
     .home-section .home-details,
@@ -791,18 +859,19 @@ header .navbar {
     }
 
     .hero-section .hero-image-wrapper {
-        max-width: 270px;
+        max-width: 400px;
     }
 
-    .home-section .section-content {
+    .home-section .home-content {
         gap: 70px;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        text-align: center;
     }
 
     .home-section .home-image-wrapper .home-image {
         width: 100%;
         height: 100%;
-        max-width: 250px;
+        max-width: 400px;
 
     }
 
@@ -824,6 +893,10 @@ header .navbar {
     .contact-section .section-content {
         flex-direction: column;
         align-items: center;
+    }
+
+    .guiding-list {
+        flex-direction: column;
     }
 
 }

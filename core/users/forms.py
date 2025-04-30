@@ -20,6 +20,11 @@ class LoginForm(FlaskForm):
 
 class ProgramForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
-    description = StringField("desctription", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Program")
+
+
+class BlogForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("content", validators=[DataRequired()])
     submit = SubmitField("Create Program")
