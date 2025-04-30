@@ -80,14 +80,14 @@ header .navbar {
 .navbar .nav-logo {
     display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 0.5px;
     text-align: center;
     line-height: 1rem;
 
 }
 
 .navbar .nav-logo div {
-    background-color: var(--primary-color);
+    background: transparent;
     padding: 6px;
     border-radius: .5rem;
 }
@@ -107,7 +107,7 @@ header .navbar {
 .navbar .nav-logo .title-name {
     /* color: var(--dark-color);
      */
-    color: rgb(230, 183, 98);
+    color: var(--white-color);
     font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -122,7 +122,7 @@ header .navbar {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
-    color: rgb(230, 183, 98);
+    color: var(--white-color);
     font-family: "Dancing Script", cursive;
 }
 
@@ -140,7 +140,7 @@ header .navbar {
 .navbar .nav-menu .nav-link {
     padding: 10px 18px;
     font-size: 1.12rem;
-    color: rgb(230, 183, 98);
+    color: var(--white-color);
     transition: 0.3s ease;
     border-radius: 30px;
 
@@ -157,7 +157,7 @@ header .navbar {
 }
 
 header.sticky {
-    background: rgb(252, 246, 237);
+    background: #474747;
 
 }
 
@@ -173,14 +173,7 @@ header.sticky {
     position: relative;
 }
 
-.hero-section .section-content {
-    /* display: flex;
-    align-items: center;
-    min-height: 100vh;
-    height: 400px;
-    color: #666; */
-
-}
+.hero-section .section-content {}
 
 .hero-section .hero-details {
     text-align: center;
@@ -437,7 +430,7 @@ header.sticky {
 
 .program-section {
     padding: 120px 0;
-    background: rgb(252, 246, 237);
+    background: #e7d8ac;
     color: #4e4e4e;
     max-height: 100vh;
     position: relative;
@@ -523,6 +516,7 @@ header.sticky {
 .blog-section {
     padding: 50px 0 100px;
     position: relative;
+    background: #e7d8ac;
 
 }
 
