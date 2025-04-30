@@ -66,9 +66,17 @@ header {
     position: fixed;
     width: 100%;
     z-index: 5;
-    background: rgb(252, 246, 237)
-        /* background: var(--primary-color); */
+    /* background: rgb(252, 246, 237) */
 }
+
+/* header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("../images/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+} */
 
 header .navbar {
     display: flex;
@@ -93,7 +101,8 @@ header .navbar {
 }
 
 .navbar .nav-logo img {
-    width: 28px;
+    width: 32px;
+    height: 32px;
 
 }
 
@@ -106,7 +115,7 @@ header .navbar {
 .navbar .nav-logo .title-name {
     /* color: var(--dark-color);
      */
-    color: #4e4e4e;
+    color: white;
     font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -121,7 +130,7 @@ header .navbar {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
-    color: #4e4e4e;
+    color: white;
     font-family: "Dancing Script", cursive;
 }
 
@@ -130,14 +139,22 @@ header .navbar {
     gap: 10px;
 }
 
+.navbar .nav-menu .nav-item {
+    position: relative;
+}
+
+
+
 .navbar .nav-menu .nav-link {
     padding: 10px 18px;
     font-size: 1.12rem;
     /* color: var(--white-color); */
-    color: #4e4e4e;
+    color: var(--white-color);
     transition: 0.3s ease;
     border-radius: 30px;
+
 }
+
 
 .navbar :where(#menu-close-button, #menu-open-button) {
     display: none;
@@ -152,72 +169,77 @@ header .navbar {
 
 .hero-section {
     min-height: 100vh;
-    background-image: url("../images/hero.jpg");
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("../images/hero.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 400px;
     background-position: center;
     /* centers the image *
     /* background: var(--primary-color); */
+    position: relative;
 }
 
 .hero-section .section-content {
-    display: flex;
+    /* display: flex;
     align-items: center;
     min-height: 100vh;
     height: 400px;
-    color: #666;
-
-
-
+    color: #666; */
 
 }
 
 .hero-section .hero-details {
     text-align: center;
+    color: var(--white-color);
     margin: 0px auto 250px;
-
+    width: 90%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 }
 
 .hero-section .hero-details .title {
-
-    font-size: 3rem;
+    font-size: 62px;
     color: white;
     font-family: "Roboto", sans-serif;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     text-transform: uppercase;
     margin: 20px auto 0;
-
-
-
 }
 
-.hero-section .hero-details .description {
+.hero-section .hero-details p {
     max-width: 70%;
-    margin: 24px 0 40px;
-    font-size: 2rem;
+    margin: 10px 0 40px;
+    font-size: 14px;
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     margin: auto;
+    margin-bottom: 20px;
 }
 
-.hero-section .hero-details .button {
-    padding: 10px 26px;
-    border: 2px solid transparent;
-    color: #4e4e4e;
-    border-radius: 30px;
-    background-color: rgb(230, 183, 98);
+.hero-section .hero-details .learn-more {
+    padding: 12px 36px;
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    background: transparent;
     font-weight: 600;
+    font-size: 13px;
     transition: 0.3s ease;
     margin-top: 40px;
+    position: relative;
+    cursor: pointer;
 
 }
 
-.hero-section .hero-details .button:hover {
+.hero-section .hero-details .learn-more:hover {
     color: var(--white-color);
     border-color: var(--white-color);
-    background: transparent;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+
 }
 
 .hero-section .hero-image-wrapper {
@@ -683,6 +705,8 @@ header .navbar {
 
 .footer-section .social-link-list .social-link:hover {
     color: rgb(230, 183, 98);
+    transform: rotateY(45);
+
 }
 
 .footer-section :where(.copyright-text, .social-link) {
@@ -800,6 +824,21 @@ header .navbar {
     .contact-section .section-content {
         flex-direction: column;
         align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .hero-section .hero-details .title {
+        font-size: 20px;
+    }
+
+    .hero-section .hero-details p {
+        font-size: 10px;
+    }
+
+    .hero-section .hero-details .learn-more {
+        padding: 9px 24px;
     }
 
 }
