@@ -5,7 +5,7 @@
     <h2 class="section-title">Our Blogs</h2>
     {% if current_user.is_authenticated %}
     <div class="create_blog">
-        <a href="{{ url_for('users.create_program')}}">create Program</a>
+        <a href="{{ url_for('users.create_blog')}}">create Blog</a>
         <i class="fa-solid fa-plus"></i>
     </div>
 

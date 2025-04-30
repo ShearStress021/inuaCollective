@@ -14,18 +14,14 @@
     <div class="section-content">
         <div class="program-list">
             {% for program in programs %}
-            <div class="program-item">
-
-                <div class="program-image">
-                    <img src="{{ url_for('static', filename=program.image_file)}}" alt=" program-image">
-                </div>
-                <a class="program-content">
-                    <h3 class="program-title">{{ program.title }}</h3>
-                    <p class="program-text">{{ program.content|truncatewords(20) }}</p>
-                </a>
-            </div>
-            {% endfor %}
+            <a class="program-item">
+                <img src="{{ url_for('static', filename=program.image_file)}}" alt=" program-image">
+                <h3 class="program-title">{{ program.title }}</h3>
+                <p class="program-text">{{ program.content|truncatewords(20) }}</p>
+            </a>
         </div>
+        {% endfor %}
+    </div>
     </div>
 </section>
 {% endblock %}
