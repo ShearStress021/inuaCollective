@@ -30,4 +30,4 @@ def create_db(app):
 
 def truncate_words(s, num_words) -> str:
     words = s.split()
-    return " ".join(words[:num_words]) + ("..." if len(words) > num_words else "")
+    return " ".join(words[:num_words]) + (" ..." if len(words) > num_words else "")

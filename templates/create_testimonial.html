@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="create-program-section">
+    <div class="section-content">
+        <form action="" method="post" enctype="multipart/form-data" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-box">
+                <div class="top">
+                    <h3 class="title-rl">Create Testimony</h3>
+                </div>
+
+                <div class="input-box">
+                    {{ form.name(class='inputs', placeholder='First Name Last Name') }}
+                    <i class='bx bx-pencil'></i>
+                </div>
+
+                <div class="input-box">
+                    {{ form.content(class='inputs txt', placeholder='Testimonial content') }}
+                    <i class='bx bx-text'></i>
+                </div>
+                <div class="custom-file">
+                    <label class="custom-file-label" for="image">profile Image:</label>
+                    <input type="file" class="custom-file-input" placeholder="Program Image" name="profile_image">
+                </div>
+
+                <div class="input-box">
+                    {{ form.submit(class='Rbtn') }}
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

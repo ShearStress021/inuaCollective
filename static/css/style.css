@@ -156,6 +156,11 @@ header .navbar {
     color: #666;
 }
 
+header.sticky {
+    background: rgb(252, 246, 237);
+
+}
+
 /* -----------hero section ------------- */
 
 .hero-section {
@@ -440,7 +445,8 @@ header .navbar {
 
 }
 
-.program-section .create_program {
+.program-section .create_program,
+.blog-section .create_blog {
     position: absolute;
     padding: 20px 36px;
     background: rgb(230, 183, 98);
@@ -513,57 +519,53 @@ header .navbar {
     line-height: 1.6;
 }
 
-/* 
-.program-section .program-list .program-item .program-title {
-    color: white;
-    font-weight: bold;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    margin-bottom: 0.5rem;
+/* ------------------Blog Section -----------------*/
+.blog-section {
+    padding: 50px 0 100px;
+    position: relative;
+
 }
 
-.program-section .program-list .program-item .program-content {
-    max-width: 90%;
-    width: 100%;
+.blog-section .blog-list {
     display: flex;
-    flex-direction: column;
-    background: rgb(216, 216, 215);
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    width: 80%;
+    margin: auto;
     text-align: center;
-    padding: 1.5rem 1rem;
+    padding-top: 110px;
+}
+
+.blog-section .blog-list .blog-item {
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    padding: 10px 10px;
+    text-decoration: none;
 
 }
 
-
-.program-section .program-list .program-item .program-image {
-    max-width: 90%;
+.blog-section .blog-list .blog-item img {
+    border-radius: 10px;
     width: 100%;
-    transition: filter 0.3s ease;
-    object-fit: cover;
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-
-
-} */
-
-/* .program-section .program-list .program-item .program-content {
-    background: rgb(190, 190, 189);
-    padding: 1.5rem 1rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    max-width: 90%;
-    width: 100%;
-
-} */
-
-/* .program-section .program-list .program-item .program-img .program-section .program-list .program-item:hover .program-image {
-    filter: blur(4px) brightness(0.7);
 }
 
-.program-section .program-list .program-item:hover .program-title {
-    opacity: 1;
-} */
+.blog-section .blog-list .blog-item p {
+    padding: 0;
+    font-size: 13px;
+    color: #4e4e4e;
+}
+
+.blog-section .blog-list .blog-item h3 {
+    margin-top: 16px;
+    text-align: left;
+    color: #212121;
+    margin-bottom: 15px;
+}
+
+.blog-section .blog-list .blog-item:hover {
+    box-shadow: 4px 8px 5px #faeded;
+    transform: scale(4px 4px);
+}
 
 /* -------------------Testimonials Section ------------- */
 .testimonial-section {

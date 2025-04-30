@@ -27,4 +27,10 @@ class ProgramForm(FlaskForm):
 class BlogForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("content", validators=[DataRequired()])
-    submit = SubmitField("Create Program")
+    submit = SubmitField("Create Blog")
+
+
+class TestimonialForm(FlaskForm):
+    name = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Testimony")

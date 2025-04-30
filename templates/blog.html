@@ -3,12 +3,22 @@
 {% block content %}
 <section class="blog-section">
     <h2 class="section-title">Our Blogs</h2>
+    {% if current_user.is_authenticated %}
+    <div class="create_blog">
+        <a href="{{ url_for('users.create_program')}}">create Program</a>
+        <i class="fa-solid fa-plus"></i>
+    </div>
+
+    {% endif %}
     <div class="section-content">
         <div class="blog-list">
-            <div class="blog-item">
-
-
-            </div>
+            {% for blog in blogs %}
+            <a href="" class="blog-item">
+                <img src="{{ url_for('static', filename=blog.image_file)}}" alt="blog-image">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.content|truncatewords(20)}}</p>
+            </a>
+            {% endfor %}
         </div>
 
     </div>

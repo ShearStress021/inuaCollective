@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from .forms import RegistrationForm, LoginForm, ProgramForm, BlogForm
+from .forms import RegistrationForm, LoginForm, ProgramForm, BlogForm, TestimonialForm
 from flask_login import current_user, login_user, login_required, logout_user
-from core.models import User, db, Program, Blog
+from core.models import User, db, Program, Blog, Testimonial
 from flask_bcrypt import Bcrypt
 from .utils import create_path
 
@@ -91,6 +91,26 @@ def create_blog():
     return render_template("create_blog.html", form=form)
 
 
+@users.route("/admin/testimonial", methods=["GET", "POST"])
+@login_required
+def create_testimonial():
+    form = TestimonialForm()
+    if request.method == "POST":
+        file = request.files["profile_image"]
+        if file:
+            image_path = create_path("blog", file)
+            testimony = TestimonialForm(
+                title=form.name.data,
+                content=form.content.data,
+                profile_pic=image_path,
+                user_id=current_user.id,
+            )
+            db.session.add(testimony)
+            db.session.commit()
+            return redirect(url_for("users.blog"))
+    return render_template("create_testimonial.html", form=form)
+
+
 @users.route("/admin/logout")
 def log_out():
     logout_user()
@@ -124,9 +144,16 @@ def about():
 
 @users.route("/blog")
 def blog():
-    return render_template("blog.html")
+    blogs = Blog.query.all()
+    return render_template("blog.html", blogs=blogs)
 
 
 @users.route("/event")
 def event():
     return render_template("event.html")
+
+
+@users.route("/program/<int:program_id>")
+def program_detail(program_id):
+    program = Program.query.get_or_404(program_id)
+    return render_template("program_detail.html", program=program)
