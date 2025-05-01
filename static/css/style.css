@@ -243,7 +243,9 @@ header.sticky {
 /* ---------Home section--------- */
 .home-section {
     padding: 10px 0;
-    background-color: rgb(255, 240, 222);
+    /* background-color: rgb(255, 240, 222);
+     */
+    background: linear-gradient(to left, rgb(255, 240, 222) 50%, rgb(255, 240, 222) 75%, rgb(255, 240, 222) 50% 50%);
 }
 
 .home-section .section-content {
@@ -430,7 +432,9 @@ header.sticky {
 .program-section {
     padding: 50px 0 100px;
     position: relative;
-    background: #e7d8ac;
+    /* background: #e7d8ac; */
+    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+    /* background: linear-gradient(to left, #e7d8ac 50%, #e7d8ac 33%, #e7d8ac 33%); */
 }
 
 .program-section .create_program,
@@ -462,7 +466,7 @@ header.sticky {
     width: 80%;
     margin: auto;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 25px;
 }
 
 .program-section .program-list .program-item {
@@ -498,7 +502,8 @@ header.sticky {
 .blog-section {
     padding: 50px 0 100px;
     position: relative;
-    background: #e7d8ac;
+    /* background: #e7d8ac; */
+    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
 
 }
 
@@ -552,11 +557,6 @@ header.sticky {
     background: #f5e5bd;
 }
 
-.testimonial-section .slide-wrapper {
-    overflow: hidden;
-    margin: 0 60px 50px;
-}
-
 .testimonial-section .testimonial {
     user-select: none;
     display: flex;
@@ -566,12 +566,13 @@ header.sticky {
     text-align: center;
 }
 
-.testimonial-section .testimonial img {
+.testimonial-section .testimonial .user-image {
     width: 180px;
     height: 180px;
     object-fit: cover;
-    border-radius: 50%;
     margin-bottom: 50px;
+    border-radius: 50%;
+
 }
 
 .testimonial-section .testimonial .name {
@@ -581,13 +582,7 @@ header.sticky {
 
 .testimonial-section .testimonial .feedback {
     line-height: 25px;
-}
 
-.testimonial-section .swiper-pagination-bullet {
-    width: 15px;
-    height: 15px;
-    opacity: 1;
-    background: rgb(230, 183, 98);
 }
 
 .testimonial-section .swipper-slide-btn {
@@ -603,7 +598,8 @@ header.sticky {
 /* -----------Gallery Section------------ */
 .gallery-section {
     padding: 50px 0 100px;
-    background: rgb(252, 246, 237);
+    /* background: rgb(252, 246, 237); */
+    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
 }
 
 .gallery-section .gallery-list {

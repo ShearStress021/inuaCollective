@@ -98,9 +98,9 @@ def create_testimonial():
     if request.method == "POST":
         file = request.files["profile_image"]
         if file:
-            image_path = create_path("blog", file)
-            testimony = TestimonialForm(
-                title=form.name.data,
+            image_path = create_path("testimonial", file)
+            testimony = Testimonial(
+                name=form.name.data,
                 content=form.content.data,
                 profile_pic=image_path,
                 user_id=current_user.id,
@@ -123,7 +123,8 @@ def log_out():
 @users.route("/")
 def home():
     program = Program.query.first()
-    return render_template("home.html", program=program)
+    testimonials = Testimonial.query.all()
+    return render_template("home.html", program=program, testimonials=testimonials)
 
 
 @users.route("/programs")
