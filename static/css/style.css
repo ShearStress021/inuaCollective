@@ -430,38 +430,49 @@ header.sticky {
 .program-section {
     padding: 50px 0 100px;
     position: relative;
-    background: #fce9c3;
+    background: #e7d8ac;
 }
 
 .program-section .create_program,
 .blog-section .create_blog {
-    position: absolute;
-    padding: 20px 36px;
-    background: rgb(230, 183, 98);
-    margin-bottom: 60px;
     display: inline-block;
-    top: 20%;
+    padding: 10px 15px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 19%;
     right: 5%;
-    transform: translate(-20%, -5%);
-    border-radius: 10px;
+    border-radius: 8px;
+}
+
+.program-section .create_program a,
+.blog-section .create_blog a {
+    padding: 15px 15px;
+    text-decoration: none;
+    color: #474747;
+}
+
+.program-section .section-content {
+    margin: auto;
+    padding: 50px 10px 40px;
 }
 
 .program-section .program-list {
     display: flex;
+    text-align: center;
     width: 80%;
     margin: auto;
     flex-wrap: wrap;
-    text-align: center;
-    padding-top: 110px;
+    gap: 10px;
 }
 
 .program-section .program-list .program-item {
-    flex-basis: 33%;
+    flex-basis: 31%;
     border-radius: 10px;
-    margin-bottom: 5%;
     text-align: left;
+    overflow: hidden;
+    margin-bottom: 5%;
     padding: 10px 10px;
-    text-decoration: none;
+    background: #fff3f3;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -475,11 +486,13 @@ header.sticky {
 
 .program-section .program-item p {
     font-size: 13px;
+    margin-bottom: 2%;
 }
 
 .program-section .program-item:hover {
     transform: translateY(-4px);
 }
+
 
 /* ------------------Blog Section -----------------*/
 .blog-section {
@@ -505,6 +518,7 @@ header.sticky {
     text-align: left;
     padding: 10px 10px;
     text-decoration: none;
+    background: #fff3f3;
 
 }
 
@@ -528,6 +542,7 @@ header.sticky {
 
 .blog-section .blog-list .blog-item:hover {
     box-shadow: 4px 8px 5px #faeded;
+    transform: translateY(4px);
     transform: scale(4px 4px);
 }
 
