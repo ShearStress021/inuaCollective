@@ -626,9 +626,51 @@ header.sticky {
 }
 
 /* ----------------About css------------ */
+.about {
+    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+}
+
+.video-section {
+    padding: 50px 0 40px;
+
+
+}
+
+
+
+.video-card {
+    margin: auto;
+    width: 60%;
+    height: 450px;
+    border-radius: 32px;
+    /* background: linear-gradient(0deg, #0000004D, #0000004d); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    display: grid;
+    place-items: center;
+}
+
+.video-card video {
+    /* height: 600px; */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.play-btn {
+    width: 75px;
+    height: 75px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: blue;
+    border-radius: 50%;
+}
+
+
 .mission-section {
     padding: 50px 0 100px;
-    background: rgb(247, 228, 195);
+    /* background: rgb(247, 228, 195); */
 }
 
 .guiding-list {
@@ -665,7 +707,7 @@ header.sticky {
 
 .contact-section {
     padding: 50px 0 100px;
-    background: #f5e5bd;
+    /* background: #f5e5bd; */
 }
 
 .contact-section .section-content {

@@ -26,6 +26,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(45), unique=True, nullable=False)
     password = db.Column(db.String(45), nullable=False)
     programs = db.relationship("Program", backref="user", lazy=True)
+    programs = db.relationship("Gallery", backref="user", lazy=True)
+    programs = db.relationship("Blog", backref="user", lazy=True)
+    programs = db.relationship("Testimonial", backref="user", lazy=True)
+    programs = db.relationship("Event", backref="user", lazy=True)
+    programs = db.relationship("OurTeam", backref="user", lazy=True)
 
     def __repr__(self):
         return f"User({self.username})"
@@ -75,4 +80,13 @@ class Testimonial(db.Model):
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image_file = db.Column(db.String(255), unique=True, nullable=False)
+    link = db.Column(db.String(255), unique=True, nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+
+class OurTeam(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=True, nullable=False)
+    profile_pic = db.Column(db.String(255), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)

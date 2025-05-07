@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<main>
+<main class="about">
+    <section class="video-section">
+        <h2 class="section-title">Who We Are</h2>
+        <div class="section-content">
+            <div class="video-card">
+                <video src="{{  url_for('static', filename='video/newIntro.mp4')}}" controls autoplay></video>
+            </div>
+        </div>
+    </section>
     <section class="mission-section">
         <h2 class="section-title">Our Guiding</h2>
         <div class="section-content">
