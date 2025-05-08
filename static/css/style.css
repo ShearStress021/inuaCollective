@@ -671,6 +671,7 @@ header.sticky {
 .mission-section {
     padding: 50px 0 100px;
     /* background: rgb(247, 228, 195); */
+    align-items: center;
 }
 
 .guiding-list {
@@ -678,6 +679,7 @@ header.sticky {
     display: flex;
     justify-content: space-between;
     margin: auto;
+    gap: 20px;
 
 }
 
@@ -966,6 +968,10 @@ header.sticky {
     .footer-section .section-content {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .video-card {
+        width: 100%;
     }
 
 }
