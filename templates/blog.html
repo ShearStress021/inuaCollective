@@ -16,7 +16,7 @@
     <div class="section-content">
         <div class="blog-list">
             {% for blog in blogs %}
-            <a href="" class="blog-item">
+            <a href="{{ url_for('users.blog_detail', blog_id=blog.id)}}" class="blog-item">
                 <img src="{{ url_for('static', filename=blog.image_file)}}" alt="blog-image">
                 <h3>{{ blog.title }}</h3>
                 <p>{{ blog.content|truncatewords(20)}}</p>

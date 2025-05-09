@@ -1,4 +1,22 @@
-{% extents 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
+<section class="header-top">
+
+</section>
+<section class="blog-detail">
+    <div class="blog-header blog-container">
+
+        <h2 class="blog-title">{{ blog.title }}</h2>
+        <img class="blog-img" src="{{ url_for('static', filename=blog.image_file)}}" alt="">
+    </div>
+
+</section>
+<section class="blog-content blog-container">
+    <p class="blog-text">{{ blog.content }}</p>
+</section>
+
+<div class="buttons">
+
+</div>
 {% endblock %}
