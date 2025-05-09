@@ -2,10 +2,10 @@
 
 {% block content %}
 <section class="header-top">
-    <h2 class="header-title section-title">Our Blogs</h2>
+
 </section>
 <section class="blog-section">
-
+    <h2 class="section-title">Our Blogs</h2>
     {% if current_user.is_authenticated %}
     <div class="create_blog">
         <a href="{{ url_for('users.create_blog')}}">create Blog</a>
