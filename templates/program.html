@@ -2,8 +2,11 @@
 
 {% block content %}
 
+<section class="header-top">
+    <h2 class="header-title section-title">Programs</h2>
+</section>
 <section class="program-section">
-    <h2 class="section-title">Programs</h2>
+
     {% if current_user.is_authenticated %}
     <div class="create_program">
         <a href="{{ url_for('users.create_program')}}">create Program</a>
@@ -14,7 +17,7 @@
     <div class="section-content">
         <div class="program-list">
             {% for program in programs %}
-            <a class="program-item">
+            <a href="{{ url_for('users.program_detail', program_id=program.id)}}" class="program-item">
                 <img class="" src="{{ url_for('static', filename=program.image_file)}}" alt=" program-image">
                 <h3 class="program-title">{{ program.title }}</h3>
                 <p class="program-text">{{ program.content|truncatewords(20) }}</p>
@@ -25,4 +28,6 @@
     </div>
     </div>
 </section>
+
+
 {% endblock %}

@@ -17,7 +17,7 @@
 }
 
 /* -------------Custom Styling------------- */
-ul {
+li {
     list-style: none;
 }
 
@@ -159,6 +159,20 @@ header .navbar {
 header.sticky {
     background: #474747;
 
+}
+
+/* ----- Header top ---------- -----*/
+.header-top {
+    padding: 50px 0 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("../images/thumbnail.png");
+}
+
+.header-title {
+    margin-top: 20px;
+    color: #fff;
 }
 
 /* -----------hero section ------------- */
@@ -327,7 +341,9 @@ header.sticky {
 .login-section,
 .create-program-section {
     padding: 120px 0;
+    height: 100vh;
     background: oldlace;
+    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
 
     /* margin-top: 70px; */
 }
@@ -429,13 +445,63 @@ header.sticky {
 }
 
 /* ------------------Program Section ------------------- */
+
 .program-section {
     padding: 50px 0 100px;
+
     position: relative;
-    /* background: #e7d8ac; */
-    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
-    /* background: linear-gradient(to left, #e7d8ac 50%, #e7d8ac 33%, #e7d8ac 33%); */
+    background: oldlace;
+
 }
+
+.program-section .section-content {
+    margin: auto;
+    max-width: 1068px;
+    width: 100%;
+}
+
+.program-section .program-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 3rem 0 2rem;
+
+}
+
+
+.program-section .program-item {
+    background: #fff;
+    box-shadow: 0 4px 14px hsl(355deg 25% 15% /10%);
+    padding: 15px;
+    border-radius: 0.5rem;
+}
+
+.program-section .program-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5rem;
+}
+
+.program-section .program-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #172317;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.program-section .program-item p {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    margin: 5px 0 10px;
+    color: #494949;
+}
+
 
 .program-section .create_program,
 .blog-section .create_blog {
@@ -443,33 +509,33 @@ header.sticky {
     padding: 10px 15px;
     background: var(--primary-color);
     position: absolute;
-    top: 19%;
+    top: 2%;
     right: 5%;
     border-radius: 8px;
 }
 
-.program-section .create_program a,
+/* .program-section .create_program a,
 .blog-section .create_blog a {
     padding: 15px 15px;
     text-decoration: none;
     color: #474747;
-}
+} */
 
-.program-section .section-content {
+/* .program-section .section-content {
     margin: auto;
     padding: 50px 10px 40px;
-}
+} */
 
-.program-section .program-list {
+/* .program-section .program-list {
     display: flex;
     text-align: center;
     width: 80%;
     margin: auto;
     flex-wrap: wrap;
     gap: 25px;
-}
+} */
 
-.program-section .program-list .program-item {
+/* .program-section .program-list .program-item {
     flex-basis: 31%;
     border-radius: 10px;
     text-align: left;
@@ -478,32 +544,37 @@ header.sticky {
     padding: 10px 10px;
     background: #fff3f3;
     transition: transform 0.3s ease-in-out;
-}
+    text-decoration: none;
+} */
 
-.program-section .program-item img {
+/* .program-section .program-item img {
     border-radius: 10px;
-}
 
+} */
+/* 
 .program-section .program-item h3 {
     padding-bottom: 10px;
-}
-
+    color: #272727;
+} */
+/* 
 .program-section .program-item p {
     font-size: 13px;
     margin-bottom: 2%;
-}
+    color: #4e4e4e;
+} */
 
-.program-section .program-item:hover {
+/* .program-section .program-item:hover {
     transform: translateY(-4px);
-}
+} */
 
 
 /* ------------------Blog Section -----------------*/
 .blog-section {
     padding: 50px 0 100px;
     position: relative;
-    /* background: #e7d8ac; */
-    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+    height: 100vh;
+    background: oldlace;
+    /* background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%); */
 
 }
 
@@ -598,8 +669,8 @@ header.sticky {
 /* -----------Gallery Section------------ */
 .gallery-section {
     padding: 50px 0 100px;
-    /* background: rgb(252, 246, 237); */
-    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+    height: 100vh;
+    background: oldlace;
 }
 
 .gallery-section .gallery-list {
@@ -627,7 +698,9 @@ header.sticky {
 
 /* ----------------About css------------ */
 .about {
-    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+
+    background: oldlace;
+    /* background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%); */
 }
 
 .video-section {
@@ -657,21 +730,17 @@ header.sticky {
     border-radius: 15px;
 }
 
-.play-btn {
-    width: 75px;
-    height: 75px;
-    display: grid;
-    place-items: center;
-    background: #fff;
-    color: blue;
-    border-radius: 50%;
-}
+
 
 
 .mission-section {
     padding: 50px 0 100px;
     /* background: rgb(247, 228, 195); */
     align-items: center;
+}
+
+.mission-section .section-content {
+    max-width: 1068px;
 }
 
 .guiding-list {
@@ -685,7 +754,7 @@ header.sticky {
 
 .guiding-item {
     flex-basis: 31%;
-    background: #fff3f3;
+    background: #fff;
     border-radius: 10px;
     padding: 20px 12px;
     margin-bottom: 1%;

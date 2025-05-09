@@ -158,3 +158,9 @@ def event():
 def program_detail(program_id):
     program = Program.query.get_or_404(program_id)
     return render_template("program_detail.html", program=program)
+
+
+@users.route("/admin/<int:blog_id>")
+def blog_detail(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    return render_template("blog_detail.html", blog=blog)
