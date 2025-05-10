@@ -1120,8 +1120,16 @@ header.sticky {
         width: 60%;
     }
 
+    .program-detail-section .program-detail .program-text {
+        width: 70%;
+    }
+
     .program-detail-section .program-detail .program-text h3 {
         font-size: 1.4rem;
+    }
+
+    .program-detail-section .program-detail .program-text p {
+        font-size: 0.875rem;
     }
 
 }
