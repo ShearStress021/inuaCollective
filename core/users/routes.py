@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from .forms import RegistrationForm, LoginForm, ProgramForm, BlogForm, TestimonialForm
 from flask_login import current_user, login_user, login_required, logout_user
 from core.models import User, db, Program, Blog, Testimonial
@@ -71,6 +71,17 @@ def create_program():
     return render_template("create_program.html", form=form)
 
 
+@users.route("/admin/program/<int:program_id>/delete", methods=["POST"])
+@login_required
+def delete_program(program_id):
+    program = Program.query.get_or_404(program_id)
+    if program.user != current_user:
+        abort(403)
+    db.session.delete(program)
+    db.session.commit()
+    return redirect(url_for("users.program"))
+
+
 @users.route("/admin/blog", methods=["GET", "POST"])
 @login_required
 def create_blog():
@@ -91,6 +102,17 @@ def create_blog():
     return render_template("create_blog.html", form=form)
 
 
+@users.route("/admin/blog/<int:blog_id>/delete", methods=["POST"])
+@login_required
+def delete_blog(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    if blog.user != current_user:
+        abort(403)
+    db.session.delete(blog)
+    db.session.commit()
+    return redirect(url_for("users.blog"))
+
+
 @users.route("/admin/testimonial", methods=["GET", "POST"])
 @login_required
 def create_testimonial():
@@ -109,6 +131,22 @@ def create_testimonial():
             db.session.commit()
             return redirect(url_for("users.blog"))
     return render_template("create_testimonial.html", form=form)
+
+
+@users.route("/admin/testimonial/<int:testimony_id>/delete", methods=["POST"])
+@login_required
+def delete_testimony(testimony_id):
+    testimony = Testimonial.query.get_or_404(testimony_id)
+    if testimony.user != current_user:
+        abort(403)
+    db.session.delete(testimony)
+    db.session.commit()
+    return redirect(url_for("users.home"))
+
+
+@users.route("/admin/gallery")
+@login_required
+def create_gallery(): ...
 
 
 @users.route("/admin/logout")

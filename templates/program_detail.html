@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<section class="header-top">
+
+</section>
+<section class="program-detail-section">
+    <div class="section-content">
+        <div class="program-detail">
+            <div class="program-text">
+                <h3>{{ program.title }}</h3>
+                <p>{{ program.content}}</p>
+
+                <form class="closeBtn" action="{{ url_for('users.delete_program', program_id=program.id)}}"
+                    method="POST">
+                    <button type="submit" class="close">Delete</button>
+                </form>
+            </div>
+            <img src="{{ url_for('static', filename=program.image_file)}}" alt="">
+        </div>
+    </div>
+</section>
 
 {% endblock %}

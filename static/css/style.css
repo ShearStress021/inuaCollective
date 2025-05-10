@@ -505,7 +505,8 @@ header.sticky {
 
 
 .program-section .create_program,
-.blog-section .create_blog {
+.blog-section .create_blog,
+.testimonial-section .create_testimonial {
     display: inline-block;
     padding: 10px 15px;
     background: var(--primary-color);
@@ -517,6 +518,59 @@ header.sticky {
 
 .program-section .program-item:hover {
     transform: translateY(-6px);
+}
+
+/* -----------------program details---------------- */
+.program-detail-section {
+    padding: 50px 0 100px;
+    background: rgb(241, 241, 241);
+    height: 100vh;
+}
+
+.program-detail-section .section-content {
+    margin: auto;
+    max-width: 1068px;
+    width: 100%;
+}
+
+.program-detail-section .program-detail {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.program-detail-section .program-text {
+    width: 60%;
+
+}
+
+
+.program-detail-section .program-text h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #474747;
+    width: 100%;
+    text-align: justify;
+}
+
+.program-detail-section .program-text p {
+    font-size: 1rem;
+    line-height: 1.7rem;
+    margin: 1rem 0;
+    text-align: justify;
+}
+
+.program-detail-section .program-text .close {
+    padding: 10px 20px;
+    background: rgb(252, 74, 74);
+    border-radius: 10px;
+}
+
+.program-detail-section .program-detail img {
+    width: 100%;
+    height: auto;
+    border-radius: 13px;
 }
 
 
@@ -545,8 +599,8 @@ header.sticky {
 .blog-section .blog-list .blog-item {
     background: #fff3f3;
     box-shadow: 0 4px 14px hsl(355deg 25% 15% /10%);
-    padding: 15px;
-    border-radius: 0.8rem;
+    border: 1px solid #f5e5bd;
+    border-radius: 12px;
 }
 
 .blog-section .blog-list .blog-item img {
@@ -554,19 +608,32 @@ header.sticky {
     height: 200px;
     object-fit: cover;
     object-position: center;
-    border-radius: 0.5rem;
+
 }
+
+.blog-section .blog-list .blog-item .blog-text {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 .blog-section .blog-list .blog-item p {
     font-size: 0.9rem;
     line-height: 1.5rem;
     margin: 5px 0 10px;
     color: #494949;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 20px 0px;
 }
 
 .blog-section .blog-list .blog-item h3 {
     font-size: 1.3rem;
     font-weight: 600;
+
     color: #172317;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -574,16 +641,20 @@ header.sticky {
     overflow: hidden;
 }
 
-.blog-section .blog-list .blog-item:hover {
-    box-shadow: 4px 8px 2px #474747;
-    transform: translateY(4px);
-    transform: scale(4px 4px);
+.blog-section .blog-list .blog-item a {
+
+    color: #cec29c;
+}
+
+.blog-section .blog-list .blog-item a:hover {
+    color: #96c5e4;
 }
 
 /* -------------------Testimonials Section ------------- */
 .testimonial-section {
     padding: 50px 0 100px;
     background: #f5e5bd;
+    position: relative;
 }
 
 .testimonial-section .testimonial {
@@ -593,6 +664,7 @@ header.sticky {
     padding: 35px;
     align-items: center;
     text-align: center;
+    position: relative;
 }
 
 .testimonial-section .testimonial .user-image {
@@ -613,6 +685,20 @@ header.sticky {
     line-height: 25px;
 
 }
+
+.testimonial-section .testimonial .closeBtn {
+    position: absolute;
+    top: 2%;
+    right: 30%;
+
+
+}
+
+.testimonial-section .testimonial .closeBtn button {
+    font-size: 1.5rem;
+    color: red;
+}
+
 
 .testimonial-section .swipper-slide-btn {
     color: rgb(230, 183, 98);
@@ -840,7 +926,7 @@ header.sticky {
 
 .blog-content {
 
-    margin-top: 10rem !important;
+    margin-top: 12rem !important;
 }
 
 .blog-text {
@@ -850,16 +936,40 @@ header.sticky {
     text-align: justify;
 }
 
+.detail-buttons {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.detail-buttons .editBtn {
+    padding: 10px 35px;
+    background: rgb(110, 110, 241);
+    border-radius: 10px;
+}
+
+.detail-buttons .closeBtn {
+    padding: 10px 35px;
+    background: rgb(252, 74, 74);
+    border-radius: 10px;
+}
+
 /* ---------------Footer section----------0 */
 .footer-section {
     padding: 20px 0;
     background: #272727;
+
 }
 
 .footer-section .section-content {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.footer-section .section-content .copyright-text a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .footer-section .social-link-list {
@@ -1002,6 +1112,18 @@ header.sticky {
         flex-direction: column;
     }
 
+    .program-detail-section .program-detail {
+        flex-direction: column-reverse;
+    }
+
+    .program-detail-section .program-detail img {
+        width: 60%;
+    }
+
+    .program-detail-section .program-detail .program-text h3 {
+        font-size: 1.4rem;
+    }
+
 }
 
 @media screen and (max-width: 700px) {
@@ -1020,6 +1142,28 @@ header.sticky {
     .blog-img {
         height: auto;
     }
+
+    .blog-container {
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .blog-title {
+        font-size: 2rem;
+    }
+
+    .blog-img {
+        height: 370px;
+    }
+
+    .blog-detail {
+        height: 435px;
+    }
+
+    .blog-content {
+        margin-top: 9rem !important;
+    }
+
 
 
 
@@ -1053,8 +1197,50 @@ header.sticky {
         width: 100%;
     }
 
-    .blog-title {
-        font-size: 3rem;
+
+
+}
+
+@media screen and (max-width: 570px) {
+
+    .blog-detail {
+        height: 390px;
     }
 
+    .blog-title {
+        width: 100%;
+    }
+
+    .blog-img {
+        height: 340px;
+    }
+
+}
+
+@media screen and (max-width: 396px) {
+    .blog-section .blog-item {
+        padding: 10px;
+    }
+
+    .blog-title {
+        font-size: 1.4rem;
+    }
+
+    .blog-detail {
+        height: 335px;
+    }
+
+    .blog-img {
+        height: 240px;
+    }
+
+    .blog-content {
+        margin-top: 5rem !important;
+    }
+
+    .blog-text {
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+        margin: 10px 0;
+    }
 }

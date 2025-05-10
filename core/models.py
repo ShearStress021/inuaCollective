@@ -26,11 +26,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(45), unique=True, nullable=False)
     password = db.Column(db.String(45), nullable=False)
     programs = db.relationship("Program", backref="user", lazy=True)
-    programs = db.relationship("Gallery", backref="user", lazy=True)
-    programs = db.relationship("Blog", backref="user", lazy=True)
-    programs = db.relationship("Testimonial", backref="user", lazy=True)
-    programs = db.relationship("Event", backref="user", lazy=True)
-    programs = db.relationship("OurTeam", backref="user", lazy=True)
+    gallerys = db.relationship("Gallery", backref="user", lazy=True)
+    blogs = db.relationship("Blog", backref="user", lazy=True)
+    testimonials = db.relationship("Testimonial", backref="user", lazy=True)
+    events = db.relationship("Event", backref="user", lazy=True)
+    ourTeams = db.relationship("OurTeam", backref="user", lazy=True)
 
     def __repr__(self):
         return f"User({self.username})"

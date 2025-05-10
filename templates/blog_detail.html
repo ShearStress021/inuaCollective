@@ -16,7 +16,13 @@
     <p class="blog-text">{{ blog.content }}</p>
 </section>
 
-<div class="buttons">
+{% if current_user.is_authenticated %}
+<div class="detail-buttons blog-container">
 
+    <form class="closeBtn" action="{{ url_for('users.delete_blog', blog_id=blog.id)}}" method="POST">
+        <button type="submit" class="close"> Delete</button>
+    </form>
 </div>
+{% endif %}
+
 {% endblock %}

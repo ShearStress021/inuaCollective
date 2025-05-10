@@ -45,6 +45,13 @@
 
     <section class="testimonial-section">
         <h2 class="section-title">Testimonials</h2>
+        {% if current_user.is_authenticated %}
+        <div class="create_testimonial">
+            <a href="{{ url_for('users.create_testimonial')}}">create Testimonial</a>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+
+        {% endif %}
         <div class="section-content">
             <div class="slide-container swiper">
                 <div class="slider-wrapper">
@@ -55,9 +62,17 @@
                                 alt="">
                             <h3 class="name">{{ testimonial.name }}</h3>
                             <p class="feedback">{{ testimonial.content }}</p>
+                            {% if current_user.is_authenticated %}
+                            <form class="closeBtn"
+                                action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}"
+                                method="POST">
+                                <button type="submit" class="fa-solid fa-trash"></button>
+                            </form>
+                            {% endif %}
 
                         </div>
                         {% endfor %}
+
                     </ul>
                     <div class="swiper-pagination"></div>
                     <div class="swipper-slide-btn swiper-button-prev"></div>
