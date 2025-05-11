@@ -1,7 +1,14 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
-from .forms import RegistrationForm, LoginForm, ProgramForm, BlogForm, TestimonialForm
+from .forms import (
+    RegistrationForm,
+    GalleryForm,
+    LoginForm,
+    ProgramForm,
+    BlogForm,
+    TestimonialForm,
+)
 from flask_login import current_user, login_user, login_required, logout_user
-from core.models import User, db, Program, Blog, Testimonial
+from core.models import User, db, Program, Blog, Testimonial, Gallery
 from flask_bcrypt import Bcrypt
 from .utils import create_path
 
@@ -129,7 +136,7 @@ def create_testimonial():
             )
             db.session.add(testimony)
             db.session.commit()
-            return redirect(url_for("users.blog"))
+            return redirect(url_for("users.home"))
     return render_template("create_testimonial.html", form=form)
 
 
@@ -144,9 +151,34 @@ def delete_testimony(testimony_id):
     return redirect(url_for("users.home"))
 
 
-@users.route("/admin/gallery")
+@users.route("/admin/gallery", methods=["GET", "POST"])
 @login_required
-def create_gallery(): ...
+def create_gallery():
+    form = GalleryForm()
+    if request.method == "POST":
+        files = request.files.getlist("files")
+        for file in files:
+            if file:
+                image_file = create_path("gallery", file)
+                gallery = Gallery(
+                    image_file=image_file,
+                    user_id=current_user.id,
+                )
+                db.session.add(gallery)
+                db.session.commit()
+        return redirect(url_for("users.gallery"))
+    return render_template("create_gallery.html", form=form)
+
+
+@users.route("/admin/gallery/<int:gallery_id>/delete", methods=["POST"])
+@login_required
+def delete_gallery(gallery_id):
+    gallery = Gallery.query.get_or_404(gallery_id)
+    if gallery.user != current_user:
+        abort(403)
+    db.session.delete(gallery)
+    db.session.commit()
+    return redirect(url_for("users.gallery"))
 
 
 @users.route("/admin/logout")
@@ -173,7 +205,9 @@ def program():
 
 @users.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    gallerys = Gallery.query.all()
+
+    return render_template("gallery.html", gallerys=gallerys)
 
 
 @users.route("/about")

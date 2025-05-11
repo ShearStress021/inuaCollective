@@ -340,11 +340,12 @@ header.sticky {
 
 .register-section,
 .login-section,
+.create-gallery-section,
 .create-program-section {
     padding: 120px 0;
     height: 100vh;
-    background: oldlace;
-    background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%);
+    background: rgb(241, 241, 241);
+    /* background: linear-gradient(to top, #e7d8ac, #dfcf9f 50%, #cec29c 75%, #cec29c 75%); */
 
     /* margin-top: 70px; */
 }
@@ -506,6 +507,7 @@ header.sticky {
 
 .program-section .create_program,
 .blog-section .create_blog,
+.gallery-section .create-gallery,
 .testimonial-section .create_testimonial {
     display: inline-block;
     padding: 10px 15px;
@@ -713,8 +715,8 @@ header.sticky {
 /* -----------Gallery Section------------ */
 .gallery-section {
     padding: 50px 0 100px;
-    height: 100vh;
     background: oldlace;
+    position: relative;
 }
 
 .gallery-section .gallery-list {
@@ -727,6 +729,7 @@ header.sticky {
     overflow: hidden;
     border-radius: 8px;
     width: calc(100% / 3 - 32px);
+    position: relative;
 }
 
 .gallery-section .gallery-item .gallery-image {
@@ -738,6 +741,17 @@ header.sticky {
 
 .gallery-section .gallery-item:hover .gallery-image {
     transform: scale(1.3);
+}
+
+.gallery-section .gallery-item .closeBtn {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.gallery-section .gallery-item .closeBtn button {
+    font-size: 1.5rem;
+    color: red;
 }
 
 /* ----------------About css------------ */

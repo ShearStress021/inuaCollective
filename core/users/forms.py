@@ -34,3 +34,7 @@ class TestimonialForm(FlaskForm):
     name = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("content", validators=[DataRequired()])
     submit = SubmitField("Create Testimony")
+
+
+class GalleryForm(FlaskForm):
+    submit = SubmitField("Post Gallery")

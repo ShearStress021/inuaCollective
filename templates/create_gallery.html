@@ -4,4 +4,22 @@
 <section class="header-top">
 
 </section>
+<section class="create-gallery-section">
+    <div class="section-content">
+        <h2 class="section-title">create Gallery</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            <div class="custom-file">
+                <label class="custom-file-label" for="image">gallery:</label>
+                <input type="file" class="custom-file-input" placeholder="Program Image" name="files" multiple="true"
+                    autocomplete="pff" required>
+            </div>
+            <div class="input-box">
+                {{ form.submit(class='Rbtn') }}
+            </div>
+        </form>
+
+    </div>
+</section>
+
 {% endblock %}
