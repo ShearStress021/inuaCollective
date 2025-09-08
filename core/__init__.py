@@ -4,10 +4,10 @@ from .users.routes import users, bcrypt
 from .config import Config
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-from core.models import db, login_manager
+from core.extensions import db, migrate, login_manager
 
 
-login_manager.login_view = "users.login"
+
 
 
 def create_app(app) -> None:
@@ -15,8 +15,13 @@ def create_app(app) -> None:
     login_manager.init_app(app)
     bcrypt.init_app(app)
     db.init_app(app)
+    migrate.init_app(app,db)
 
-    create_db(app)
+    # more
+    db.session.expire_on_commit = False
+    login_manager.login_view = 'users.login'
+
+    # create_db(app)
     app.register_blueprint(users)
     app.jinja_env.filters["truncatewords"] = truncate_words
 

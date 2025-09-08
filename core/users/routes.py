@@ -9,11 +9,10 @@ from .forms import (
 )
 from flask_login import current_user, login_user, login_required, logout_user
 from core.models import User, db, Program, Blog, Testimonial, Gallery
-from flask_bcrypt import Bcrypt
+from core.extensions import bcrypt
 from .utils import create_path
 
 
-bcrypt = Bcrypt()
 
 users = Blueprint("users", __name__)
 

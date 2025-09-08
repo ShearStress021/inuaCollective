@@ -1,11 +1,11 @@
 import uuid
-from flask_sqlalchemy import SQLAlchemy
+
 from sqlalchemy.exc import OperationalError
-from flask_login import LoginManager, UserMixin
+from flask_login import UserMixin
+from core.extensions import login_manager, db
 
 
-db = SQLAlchemy()
-login_manager = LoginManager()
+
 
 
 @login_manager.user_loader
