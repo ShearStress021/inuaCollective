@@ -1,101 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <!-- web icon -->
+      <!-- web icon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.jpg') }}">
 
 
-    <!-- google font link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
-
-    <!--=============== REMIXICONS ===============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inua collective society</title>
-
-    <!-- Link for Swipper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Link For awesome fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Css link -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-
-
+    <title>Inua Collective Society</title>
+   
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  
+  
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/output.css')}}">
+    
+    <!-- Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+           background: linear-gradient(135deg, rgba(22, 101, 216, 0.85) 0%, rgba(22, 160, 133, 0.85) 100%);
+        }
+        .donate-btn {
+            transition: all 0.3s ease;
+        }
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
+<body class="font-[Poppins] anitialised text-gray-800">
+     <nav class="fixed w-full z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- <i data-feather="heart" class="text-red-500 mr-2"></i> -->
+                           <div class="" data-aos="fade-right">
+                             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-12 h-12 mr-1">
+                           </div>
+                       
+                            <div>
+                                <span class="text-xl font-bold text-gray-800 ml-6">INUA</span> </br>
+                                 <span class="text-xs font-bold text-gray-800 ml-1">Collective Society</span>
+                            </div>
+                            
+                      
 
-<body>
-    <header class="header">
-        <nav class="navbar section-content">
-            <a href="" class="nav-logo">
-                <div>
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo">
+                    </div>
                 </div>
-                <div class="logo-text">
-                    <span class="title-name">Inua</span> </br>
-                    <span class="title-state">Collective Society</span>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Home</a>
+                    <a href="#about" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
+                    <a href="#causes" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Programs</a>
+                    <a href="#impact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Blog</a>
+                    <a href="#contact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Event</a>
+                     <a href="#contact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Gallery</a>
+                    
                 </div>
-
-            </a>
-            <ul class="nav-menu">
-                <button class="fas fa-times" id="menu-close-button"></button>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.home')}}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.about')}}" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.program')}}" class="nav-link">Programs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.blog')}}" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.event')}}" class="nav-link">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('users.gallery')}}" class="nav-link">Gallery</a>
-                </li>
-                {% if current_user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{{ url_for('users.log_out')}}" class="nav-link">Log Out</a>
-                </li>
-                {% endif %}
-
-            </ul>
-            <button class="fas fa-bars" id="menu-open-button"></button>
-        </nav>
-    </header>
+               
+                 <div id="mobile-menu" class="absolute hidden md:hidden left-0 top-[100%] md:min-h-fit min-h-[60vh] w-full items-center">
+                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-sky-50 rounded-lg md:gap-8 items-center">
+                        <a href="#home" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Home</a>
+                        <a href="#about" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">About</a>
+                        <a href="#causes" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Programs</a>
+                        <a href="#impact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Blog</a>
+                        <a href="#contact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Event</a>
+                           <a href="#contact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
+                    </div>
+                </div>
+                 <div class="mr-2 flex items-center  md:hidden"">
+                    <ion-icon id="mobile-menu-button" name="menu" class="text-3xl cursor-pointer"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+   
     {% block content %}
     {% endblock %}
-
-    <footer class="footer-section">
-        <div class="section-content">
-            <p class="copyright-text">@ 2024 In<a href="{{ url_for('users.login')}}">ua</a> Collective Society</p>
-
-            <div class="social-link-list">
-                <a href="" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                <a href="" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                <a href="" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+     <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:justify-between md:items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center">
+                        <!-- <i data-feather="heart" class="text-red-500 mr-2"></i> -->
+                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-8 h-8  mr-2">
+                        <span class="text-xl font-bold">Inua Collective Society</span>
+                    </div>
+                    <p class="mt-4 text-gray-400 max-w-md">Empowering communities through sustainable development programs in education and economic empowerment.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
+                            <li><a href="#Program" class="text-gray-400 hover:text-white">Programs</a></li>
+                            <li><a href="#impact" class="text-gray-400 hover:text-white">Blog</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white">Event</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Financial Reports</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Subscribe</h3>
+                        <p class="text-gray-400 mb-4">Stay updated with our latest news and stories.</p>
+                        <form class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md">
+                                <i data-feather="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>© 2025 Inua Collective Society. All rights reserved</p>
+            </div>
         </div>
     </footer>
 
-    <!-- script Swipper Link -->
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Js Link -->
+    
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+      
 
 </body>
-
 </html>

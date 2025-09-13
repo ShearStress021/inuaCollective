@@ -1,57 +1,34 @@
-const menuOpenBtn = document.querySelector("#menu-open-button")
-const menuCloseBtn = document.querySelector("#menu-close-button")
+    AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        feather.replace();
+        
+        // Initialize Vanta.js globe effect
+        VANTA.GLOBE({
+            el: "#vanta-globe",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3a82ff,
+            backgroundColor: 0x1665d8,
+            size: 0.8
+        });
 
 
-menuOpenBtn.addEventListener('click', () => {
-    document.body.classList.toggle("show-mobile-menu")
-})
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
 
-menuCloseBtn.addEventListener('click', () => menuOpenBtn.click())
-
-
-const header = document.querySelector(
-    ".header"
-)
-
-window.addEventListener("scroll", () => {
-    header.classList.toggle(
-        "sticky", this.window.scrollY > 0
-    )
-})
-
-
-// Initialisae Swiper
-const swiper = new Swiper('.slider-wrapper', {
-
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 25,
-
-
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    // Responsive breakpoints
-    breakpoints: {
-        0: {
-            slidesPerView: 1
-        },
-        768: {
-            slidesPerView: 2
-        },
-        1024: {
-            slidesPerView: 3
-        },
-    }
-
+  button.addEventListener('click', function () {
+    button.name = button.name === 'menu' ? 'close' : 'menu'
+    menu.classList.toggle('hidden');
+  });
 });
+  
