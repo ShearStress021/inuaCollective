@@ -66,11 +66,11 @@
                      <ul class="swiper-wrapper"> 
                         {% for testimonial in testimonials %} 
                             <div class="select-none flex flex-col item-center p-[35px] relative text-center swiper-slide"> 
-                                <img class="w-[180px] h-[180px] object-cover rounded-full mb-[50px]" src="{{ url_for('static', filename=testimonial.profile_pic)}}" alt=""> 
+                                <img class="w-[180px] h-[180px] object-cover rounded-full mb-[50px] mx-auto" src="{{ url_for('static', filename=testimonial.profile_pic)}}" alt=""> 
                                 <h3 class="mb-4 text-[1.12rem]">{{ testimonial.name }}</h3> 
                                 <p class="leading-[25px]">{{ testimonial.content }}</p> 
                                 {% if current_user.is_authenticated %}
-                                    <form class="absolute top-[0%] right-[30%]" action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}" method="POST"> 
+                                    <form class="absolute top-[2%] right-[30%]" action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}" method="POST"> 
                                         <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
                                     </form> 
                                 {% endif %} 
