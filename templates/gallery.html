@@ -1,39 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main>
-    <section class="header-top">
 
-    </section>
-    <section class="gallery-section">
+    
+    <section id="causes" class="pt-32 pb-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Gallery</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <!-- <p class="text-gray-600 max-w-2xl mx-auto mt-4">We focus on these key areas to create maximum impact in the communities we serve.</p> -->
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%] top-[10%] hover:bg-[oldlace] mt-16" data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{ url_for('users.create_gallery')}}">create gallery</a>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
 
-        <h2 class="section-title">Gallery</h2> {% if current_user.is_authenticated %}
-        <div class="create-gallery">
-            <a href="{{ url_for('users.create_gallery')}}">create gallery</a>
-            <i class="fa-solid fa-plus"></i>
-        </div>
-
-        {% endif %}
-        <div class="section-content">
-            <ul class="gallery-list">
+            {% endif %}
+            <div class="grid md:grid-cols-3 gap-8">
+               
                 {% for gallery in gallerys %}
-                <li class="gallery-item">
-                    <img class="gallery-image" src="{{ url_for('static', filename=gallery.image_file)}}" alt="Gallery">
+                <div class="bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img class="w-full rounded-xl" src="{{ url_for('static', filename=gallery.image_file)}}" alt="Gallery">
                     {% if current_user.is_authenticated %}
-                    <form class="closeBtn" action="{{ url_for('users.delete_gallery', gallery_id=gallery.id)}}"
+                    <form class="absolute top-[2%] right-[2%] rounded-full" action="{{ url_for('users.delete_gallery', gallery_id=gallery.id)}}"
                         method="POST">
-                        <button type="submit" class="fa-solid fa-trash"></button>
+                        <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button>
                     </form>
                     {% endif %}
 
-                </li>
+                </div>
                 {% endfor %}
 
-            </ul>
-
+                
+            </div>
         </div>
     </section>
+    
 
-</main>
+
 
 {% endblock %}
