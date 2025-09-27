@@ -56,82 +56,34 @@
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div> 
             </div>
              {% if current_user.is_authenticated %}
-            <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%]" data-aos="fade-left">
-                <a href="{{ url_for('users.create_testimonial')}}">create Testimonial</a>
+            <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%] hover:bg-[oldlace]" data-aos="fade-left">
+                <a class="" href="{{ url_for('users.create_testimonial')}}">create Testimonial</a>
                 <ion-icon name="add" class=""></ion-icon>
             </div>
             {% endif %}
-            <div class="slide-container swiper">
+            <div class="slide-container swiper mt-[150px]"> 
                 <div class="slider-wrapper">
-                    <ul class="swiper-wrapper">
-                        {% for testimonial in testimonials %}
-                        <div class="testimonial swiper-slide">
-                            <img class="user-image" src="{{ url_for('static', filename=testimonial.profile_pic)}}"
-                                alt="">
-                            <h3 class="name">{{ testimonial.name }}</h3>
-                            <p class="feedback">{{ testimonial.content }}</p>
-                            {% if current_user.is_authenticated %}
-                            <form class="closeBtn"
-                                action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}"
-                                method="POST">
-                                <button type="submit" class="fa-solid fa-trash"></button>
-                            </form>
-                            {% endif %}
-
-                        </div>
-                        {% endfor %}
-
-                    </ul>
-                    <div class="swiper-pagination"></div>
-                    <div class="swipper-slide-btn swiper-button-prev"></div>
-                    <div class="swipper-slide-btn swiper-button-next"></div>
+                     <ul class="swiper-wrapper"> 
+                        {% for testimonial in testimonials %} 
+                            <div class="select-none flex flex-col item-center p-[35px] relative text-center swiper-slide"> 
+                                <img class="w-[180px] h-[180px] object-cover rounded-full mb-[50px] mx-auto" src="{{ url_for('static', filename=testimonial.profile_pic)}}" alt=""> 
+                                <h3 class="mb-4 text-[1.12rem]">{{ testimonial.name }}</h3> 
+                                <p class="leading-[25px]">{{ testimonial.content }}</p> 
+                                {% if current_user.is_authenticated %}
+                                    <form class="absolute top-[2%] right-[30%]" action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}" method="POST"> 
+                                        <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
+                                    </form> 
+                                {% endif %} 
+                            </div> {% endfor %} 
+                    </ul> 
+                    <div class="swiper-pagination"></div> 
+                    <div class="swiper-button-prev text-[#e6b762] mt-[50px] transition duration-300 ease-in-out hover:text-[oldlace]"></div> 
+                    <div class="swiper-button-next text-[#e6b762] mt-[50px] transition duration-300 ease-in-out hover:text-[oldlace]"></div> 
                 </div>
-
-            </div>
-            
 
 
         </div>
     </section>
-    <section class="testimonial-section">
-        <h2 class="section-title">Testimonials</h2>
-        {% if current_user.is_authenticated %}
-        <div class="create_testimonial">
-            <a href="{{ url_for('users.create_testimonial')}}">create Testimonial</a>
-            <i class="fa-solid fa-plus"></i>
-        </div>
-
-        {% endif %}
-        <div class="section-content">
-            <div class="slide-container swiper">
-                <div class="slider-wrapper">
-                    <ul class="testominial-list swiper-wrapper">
-                        {% for testimonial in testimonials %}
-                        <div class="testimonial swiper-slide">
-                            <img class="user-image" src="{{ url_for('static', filename=testimonial.profile_pic)}}"
-                                alt="">
-                            <h3 class="name">{{ testimonial.name }}</h3>
-                            <p class="feedback">{{ testimonial.content }}</p>
-                            {% if current_user.is_authenticated %}
-                            <form class="closeBtn"
-                                action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}"
-                                method="POST">
-                                <button type="submit" class="fa-solid fa-trash"></button>
-                            </form>
-                            {% endif %}
-
-                        </div>
-                        {% endfor %}
-
-                    </ul>
-                    <div class="swiper-pagination"></div>
-                    <div class="swipper-slide-btn swiper-button-prev"></div>
-                    <div class="swipper-slide-btn swiper-button-next"></div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
+    
 
 {% endblock %}
