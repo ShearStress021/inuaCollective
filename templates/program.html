@@ -2,9 +2,38 @@
 
 {% block content %}
 
-<section class="header-top">
+  <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Programs</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                {% for program in programs %}
+                <div class="max-w-[420px] rounded-[10px] overflow-hidden group">
+                    <div class="relative overflow-hidden" data-aos="fade-left">
+                        <img src="{{ url_for('static', filename=program.image_file)}}" class="group-hover:scale-110 transition-all duration=500">
 
-</section>
+                        <div class="bg-accent-tertiary absolute bottom-0 left-0 text-white text-base">{{ program.title }}</div>
+                    </div>
+                    <div class="" data-aos="fade-right">
+                        <h1 class="text-gray-800 text-2xl md:text-2xl font-bold leading-tight mb-6">  {{ program.title }}</h1>
+                        <p class="text-lg text-gray-800 mb-8">{{ program.content|truncatewords(20) }}</p>
+                        <div class="flex space-x-4">
+                        
+                            <a class="border-2 border-cyan-500 text-gray-800 px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">
+                                More Programs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+               
+                {% endfor %}
+             
+            </div>
+        </div>
+    </section>
+   
 <section class="program-section">
     <h2 class="section-title">Programs</h2>
 

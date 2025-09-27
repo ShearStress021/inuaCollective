@@ -21,11 +21,12 @@
   
     <link rel="stylesheet" href="{{url_for('static',filename='dist/output.css')}}">
     
+    
     <!-- Google Fonts -->
      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
-        .hero-bg {
-           background: linear-gradient(135deg, rgba(22, 101, 216, 0.85) 0%, rgba(22, 160, 133, 0.85) 100%);
+      .hero-bg {
+            background: linear-gradient(45deg,  #eb764f 3%,#7fb5e0 23%);
         }
         .donate-btn {
             transition: all 0.3s ease;
@@ -39,12 +40,12 @@
 <body class="font-[Poppins] anitialised text-gray-800">
      <nav class="fixed w-full z-50 bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-24">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
                         <!-- <i data-feather="heart" class="text-red-500 mr-2"></i> -->
                            <div class="" data-aos="fade-right">
-                             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-12 h-12 mr-1">
+                             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-16 h-16 mr-1">
                            </div>
                        
                             <div>
@@ -57,23 +58,23 @@
                     </div>
                 </div>
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                    <a href="#home" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Home</a>
-                    <a href="#about" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
-                    <a href="#causes" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Programs</a>
-                    <a href="#impact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Blog</a>
-                    <a href="#contact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Event</a>
-                     <a href="#contact" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Gallery</a>
+                    <a href="{{ url_for('users.home')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Home</a>
+                    <a href="{{ url_for('users.about')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
+                    <a href="{{ url_for('users.program')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Programs</a>
+                    <a href="{{ url_for('users.blog')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Blog</a>
+                    <a href="{{ url_for('users.event')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Event</a>
+                     <a href="{{ url_for('users.gallery')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Gallery</a>
                     
                 </div>
                
                  <div id="mobile-menu" class="absolute hidden md:hidden left-0 top-[100%] md:min-h-fit min-h-[60vh] w-full items-center">
                     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-sky-50 rounded-lg md:gap-8 items-center">
-                        <a href="#home" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Home</a>
-                        <a href="#about" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">About</a>
-                        <a href="#causes" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Programs</a>
-                        <a href="#impact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Blog</a>
-                        <a href="#contact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Event</a>
-                           <a href="#contact" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
+                        <a href="{{ url_for('users.home')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Home</a>
+                        <a href="{{ url_for('users.about')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">About</a>
+                        <a href="{{ url_for('users.program')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Programs</a>
+                        <a href="{{ url_for('users.blog')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Blog</a>
+                        <a href="{{ url_for('users.event')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Event</a>
+                           <a href="{{ url_for('users.gallery')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
                     </div>
                 </div>
                  <div class="mr-2 flex items-center  md:hidden"">

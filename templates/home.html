@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main>
-    <section id="home" class="hero-bg text-white pt-32 pb-20 " id="vanta-globe">
+
+    <section id="home" class="hero-bg text-white pt-32 pb-20" id="vanta-globe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between items-center gap-2">
                 <div class="md:w-1/2" data-aos="fade-right">
@@ -15,14 +15,14 @@
                         </a>
                     </div>
                 </div>
-                <div class="w-1/2 md:block md:w-1/2" data-aos="fade-left ">
+                <div class="md:block md:w-1/2" data-aos="fade-left ">
                      <img src="{{ url_for('static', filename='images/hero.jpg')}}" class="rounded-lg shadow-2xl">
                 </div>
             </div>
         </div>
     </section>
 
-      <section id="home" class="text-white pt-32 pb-20" id="vanta-globe">
+    <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
              <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">What We Do</h2>
@@ -30,7 +30,7 @@
             </div>
             <div class="md:flex md:items-center md:justify-between gap-8">
                 <div class="md:block md:w-1/2 items-center" data-aos="fade-left">
-                     <img src="{{ url_for('static', filename=program.image_file)}}" class="rounded-2xl shadow-2xl ml-2">
+                     <img src="{{ url_for('static', filename=program.image_file)}}" class="rounded-lg shadow-2xl ml-2">
                 </div>
                 <div class="md:w-1/2" data-aos="fade-right">
                     <h1 class="text-gray-800 text-2xl md:text-2xl font-bold leading-tight mb-6">  {{ program.title }}</h1>
@@ -47,7 +47,51 @@
         </div>
     </section>
    
-   
+
+    <!-- Testimonial -->
+    <section id="causes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Voices of Impact</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div> 
+            </div>
+
+            <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%]" data-aos="fade-left">
+                <a href="{{ url_for('users.create_testimonial')}}">create Testimonial</a>
+                <ion-icon name="add" class=""></ion-icon>
+            </div>
+            <div class="slide-container swiper">
+                <div class="slider-wrapper">
+                    <ul class="swiper-wrapper">
+                        {% for testimonial in testimonials %}
+                        <div class="testimonial swiper-slide">
+                            <img class="user-image" src="{{ url_for('static', filename=testimonial.profile_pic)}}"
+                                alt="">
+                            <h3 class="name">{{ testimonial.name }}</h3>
+                            <p class="feedback">{{ testimonial.content }}</p>
+                            {% if current_user.is_authenticated %}
+                            <form class="closeBtn"
+                                action="{{ url_for('users.delete_testimony', testimony_id=testimonial.id)}}"
+                                method="POST">
+                                <button type="submit" class="fa-solid fa-trash"></button>
+                            </form>
+                            {% endif %}
+
+                        </div>
+                        {% endfor %}
+
+                    </ul>
+                    <div class="swiper-pagination"></div>
+                    <div class="swipper-slide-btn swiper-button-prev"></div>
+                    <div class="swipper-slide-btn swiper-button-next"></div>
+                </div>
+
+            </div>
+            
+
+
+        </div>
+    </section>
     <section class="testimonial-section">
         <h2 class="section-title">Testimonials</h2>
         {% if current_user.is_authenticated %}
@@ -87,6 +131,6 @@
             </div>
         </div>
     </section>
-</main>
+
 
 {% endblock %}
