@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
     menu.classList.toggle('hidden');
   });
 });
+
+
+function toggleDropdown() {
+    const dropdown = document.getElementById('mobile-dropdown');
+    const arrow = document.getElementById('dropdown-arrow');
+    dropdown.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-180');
+}
   
 
 // Initialisae Swiper
