@@ -18,6 +18,9 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   
+    <!-- Preline js -->
+    <script src="https://unpkg.com/preline/dist/preline.js"></script>
+
 
         <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
@@ -35,9 +38,10 @@
   
     <link rel="stylesheet" href="{{url_for('static',filename='dist/output.css')}}">
     
-    
-    <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_drop_down&display=block" />
+
+  
     <style>
       .hero-bg {
             background: linear-gradient(45deg,  #eb764f 3%,#7fb5e0 23%);
@@ -74,7 +78,26 @@
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
                     <a href="{{ url_for('users.home')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Home</a>
                     <a href="{{ url_for('users.about')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
-                    <a href="{{ url_for('users.program')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Programs</a>
+                    <div class="relative group">
+                    
+                        <button id="" type="button" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium inline-flex items-center">
+                            Programs
+                            <ion-icon name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
+                           
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community Empowerment, Advocacy & Development</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Housing, Education, Jobs, immigration navigation</a>
+                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Youth Empowerment, Mentorship and Wellness</a>
+                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Arts, Sports and Culture Development</a>
+                        </div>
+                        <!-- <a href="">Youth Empowerment, Mentorship and Wellness</a>
+                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
+                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
+                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
+                        <a href="">Youth Empowerment, Mentorship and Wellness</a> -->
+                    </div>
+                    
                     <a href="{{ url_for('users.blog')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Blog</a>
                     <a href="{{ url_for('users.event')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Event</a>
                     <a href="{{ url_for('users.gallery')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Gallery</a>
@@ -90,10 +113,22 @@
                     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-sky-50 rounded-lg md:gap-8 items-center">
                         <a href="{{ url_for('users.home')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Home</a>
                         <a href="{{ url_for('users.about')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">About</a>
-                        <a href="{{ url_for('users.program')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Programs</a>
+                        <div>
+                            <button onclick="toggleDropdown()"  id="" type="button" class="w-full text-left text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center justify-between">
+                            Programs
+                            <ion-icon id="dropDown-arrow" name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
+                           
+                        </button>
+                        <div id="mobile-dropdown" class="ml-4 mt-1 space-y-1 hidden bg-[oldlace]">
+                            <a href="#" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Community Empowerment, Advocacy & Development</a>
+                            <a href="#" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Housing, Education, Jobs, immigration navigation</a>
+                            <a href="" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Youth Empowerment, Mentorship and Wellness</a>
+                            <a href="" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Arts, Sports and Culture Development</a>
+                        </div>
+                        </div>
                         <a href="{{ url_for('users.blog')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Blog</a>
                         <a href="{{ url_for('users.event')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Event</a>
-                           <a href="{{ url_for('users.gallery')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
+                        <a href="{{ url_for('users.gallery')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
                     </div>
                 </div>
                  <div class="mr-2 flex items-center  md:hidden"">
