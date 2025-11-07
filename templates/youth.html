@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Youth Empowerment ,Mentorship
+and Welness.</h2>
+                <div class="w-80 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%]" data-aos="fade-left">
+                    <a href="{{ url_for('users.create_youth_program')}}">create program</a>
+                    <ion-icon name="add" class=""></ion-icon>
+                </div>
+            {% endif %}
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-6 md:gap-x-6 mt-[150px]">
+                 {% for program in programs %}
+                <div class="max-w-[420px] rounded-[10px] overflow-hidden group">
+                    <div class="relative overflow-hidden" data-aos="fade-left">
+                        <img src="{{ url_for('static', filename=program.image_file)}}" class="group-hover:scale-110 transition-all w-full duration=500">
+
+                        <div class="bg-blue-100 absolute bottom-0 left-0 text-gray-800 text-base tracking-[2.24px]
+                        uppercase py-[6px] px-[18px]">{{ program.title }}</div>
+                    </div>
+                    <div class="px-5 py-6" data-aos="fade-right">
+    
+                        <p class="font-light text-gray-700">{{ program.content|truncatewords(20) }}
+                            <a class="italic underline text-[#4c5354] hover:bg-white hover:text-blue-600 transition">
+                                Read More
+                            </a>
+                        
+                        </p>
+                       
+                        
+                    </div>
+                </div>
+               
+                {% endfor %}
+             
+            </div>
+        </div>
+    </section>
+   
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section id="home"  class="text-white pt-32 pb-20 bg-sky-100" id="vanta-globe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Community Empowerment,
+Advocacy &amp; Development.</h2>
+                <div class="w-80 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex justify-center item-center"  data-aos="fade-down">
+               
+                  <form method="post" enctype="multipart/form-data" action="">
+                        {{ form.hidden_tag() }}
+                        <div class="flex flex-col bg-sky-50 shadow-md w-full px-10 py-4 rounded-lg gap-3">
+                            
+
+                            <div class="py-4 my-1">
+                                {{ form.title(class='border-b-slate-900 px-2 py-2 w-full text-gray-800 shadow', placeholder='Sub Program Title') }}
+                               
+                            </div>
+                            <div class="py-4 my-1">
+                                {{ form.content(class='border-b-slate-900 px-2 py-2 w-full text-gray-800 shadow', placeholder='Sub Program Description') }}
+                              
+                            </div>
+                            <div class="py-4 my-1">
+                                <label class="text-gray-800" for="image">Program Image:</label>
+                                <input type="file" class="border-b-slate-900 px-2 py-2 w-full text-gray-800 shadow" placeholder="Program Image" name="subprogram_image">
+                            </div>
+                          
+                            <div class="py-4">
+                                {{ form.submit(class='text-center bg-green-200 w-full  rounded-lg text-gray-800 my-3 py-2') }}
+                            </div>
+                        </div>
+                    </form>
+
+
+                
+            </div>
+             
+          
+        </div>
+    </section>
+
+{% endblock %}

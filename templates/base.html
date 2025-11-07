@@ -80,16 +80,16 @@
                     <a href="{{ url_for('users.about')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
                     <div class="relative group inline-block">
                     
-                        <button id="" type="button" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium inline-flex items-center">
+                        <a href="#" id="" type="button" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium inline-flex items-center">
                             Programs
                             <ion-icon name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
                            
-                        </button>
+                        </a>
                         <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md invisible group-hover:visible transition-all duration-300 z-50">
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community Empowerment, Advocacy & Development</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Housing, Education, Jobs, immigration navigation</a>
-                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Youth Empowerment, Mentorship and Wellness</a>
-                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Arts, Sports and Culture Development</a>
+                            <a href="{{ url_for('users.community_program') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community Empowerment, Advocacy & Development</a>
+                            <a href="{{ url_for('users.housing_program') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Housing, Education, Jobs, immigration navigation</a>
+                            <a href="{{ url_for('users.youth_program') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Youth Empowerment, Mentorship and Wellness</a>
+                            <a href="{{ url_for('users.sports_program') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Arts, Sports and Culture Development</a>
                         </div>
                         <!-- <a href="">Youth Empowerment, Mentorship and Wellness</a>
                         <a href="">Youth Empowerment, Mentorship and Wellness</a>

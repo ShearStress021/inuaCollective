@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, PasswordField, SubmitField
+from wtforms import StringField, SelectField,TextAreaField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, EqualTo
 
 
@@ -18,7 +18,27 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
 
 
-class ProgramForm(FlaskForm):
+
+
+class CommunityForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Program")
+
+
+class YouthEmpowerMentForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Program")
+
+
+class HousingForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Program")
+
+
+class SportArtForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("content", validators=[DataRequired()])
     submit = SubmitField("Create Program")
