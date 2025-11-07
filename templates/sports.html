@@ -35,6 +35,11 @@ Development</h2>
                        
                         
                     </div>
+                    {% if current_user.is_authenticated %}
+                        <form class="absolute top-[1%] right-[1%]" action="" method="POST"> 
+                            <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
+                        </form> 
+                    {% endif %} 
                 </div>
                
                 {% endfor %}
