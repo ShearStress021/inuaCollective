@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Programs</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 right-[2%]" data-aos="fade-left">
+                    <a href="{{ url_for('users.create_youth_program')}}">create program</a>
+                    <ion-icon name="add" class=""></ion-icon>
+                </div>
+            {% endif %}
+            <div class="flex flex-col md:flex-col md:items-center md:justify-between gap-y-6 md:gap-x-6 mt-[150px]">
+                 {% for program in programs %}
+                <div class="max-w-[420px] rounded-[10px] relative overflow-hidden group">
+                    <div class="relative overflow-hidden" data-aos="fade-left">
+    
+
+                        <div class="bg-blue-100 bottom-0 left-0 text-gray-800 py-12 px-8 text-base tracking-[2.24px]
+                        uppercase py-[6px] px-[18px]">{{ program.title }}</div>
+                    </div>
+                 
+                     {% if current_user.is_authenticated %}
+                        <form class="absolute top-[1%] right-[1%]" action="{{ url_for('users.delete_program', program_id=program.id) }}" method="POST"> 
+                            <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
+                        </form> 
+                    {% endif %} 
+                </div>
+               
+                {% endfor %}
+             
+            </div>
+        </div>
+    </section>
+   
+
+
+{% endblock %}

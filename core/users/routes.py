@@ -3,6 +3,8 @@ from .forms import (
     RegistrationForm,
     GalleryForm,
     LoginForm,
+    ProgramForm,
+    SubProgramForm,
     CommunityForm,
     HousingForm,
     SportArtForm,
@@ -15,6 +17,8 @@ from core.models import (
     User, 
     db, 
     Blog, 
+    Program,
+    SubProgram,
     Testimonial, 
     Gallery,
     Community,
@@ -68,6 +72,18 @@ def login():
     return render_template("login.html", title="login", form=form)
 
 
+@users.route("/admin/create_program", methods=["GET", "POST"])
+@login_required
+def create_program():
+    form = ProgramForm()
+    if form.validate_on_submit():
+        program = Program(
+            title=form.title.data,
+            user_id=current_user.id)
+        db.session.add(program)
+        db.session.commit()
+        return redirect(url_for('users.program'))
+    return render_template("create_program.html",form=form)
 
 
 @users.route("/admin/program/<int:program_id>/delete", methods=["POST"])
@@ -79,6 +95,31 @@ def delete_program(program_id):
     db.session.delete(program)
     db.session.commit()
     return redirect(url_for("users.program"))
+
+
+
+@users.route('/program/<int:program_id>/create_subprogram', methods=['GET', 'POST'])
+@login_required
+def create_subprogram(program_id):
+    # 1. Ensure the parent Program exists
+    program = Program.query.get_or_404(program_id)
+    form = SubProgramForm()
+    if request.method == "POST":
+        file = request.files['subprogram_image']
+        if file:
+            image_path = create_path("sub_program", file)
+            subprogram = SubProgram(
+                title = form.title.data,
+                content=form.content.data,
+                image_file=image_path,
+                program_id=program.id,
+                user_id=current_user.id
+            )
+            db.session.add(subprogram)
+            db.session.commit()
+            return redirect(url_for("users.program_detail"))
+    return render_template("create_subprogram.html", form=form, program=program)
+
 
 @users.route("/admin/community_program", methods=["GET", "POST"])
 @login_required
@@ -272,6 +313,22 @@ def home():
     return render_template("home.html", program=program, testimonials=testimonials)
 
 
+# @users.context_processor
+# def inject_programs():
+#     """Make programs available to all templates"""
+#     programs = Program.query.all()
+#     return dict(programs=programs)
+
+@users.route('/programs')
+def program():
+    # programs = Program.query.all()
+    return render_template('program.html')
+
+@users.route('/program/<int:program_id>')
+def program_detail(program_id):
+    program = Program.query.get_or_404(program_id)
+    return render_template('program_detail.html', program=program)
+
 @users.route("/youths")
 def youth_program():
 
@@ -329,10 +386,6 @@ def event():
     return render_template("event.html")
 
 
-@users.route("/program/<int:program_id>")
-def program_detail(program_id):
-    program = Program.query.get_or_404(program_id)
-    return render_template("program_detail.html", program=program)
 
 
 @users.route("/admin/<int:blog_id>")

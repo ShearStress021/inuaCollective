@@ -17,8 +17,15 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Login")
 
+class ProgramForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    submit = SubmitField("Create Program")
 
 
+class SubProgramForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    submit = SubmitField("Create Sub Program")
 
 class CommunityForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
