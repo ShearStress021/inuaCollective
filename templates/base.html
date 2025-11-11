@@ -56,89 +56,8 @@
     </style>
 </head>
 <body class="font-[Poppins] anitialised text-gray-800">
-     <nav class="fixed w-full z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-24">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <!-- <i data-feather="heart" class="text-red-500 mr-2"></i> -->
-                           <div class="" data-aos="fade-right">
-                             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-16 h-16 mr-1">
-                           </div>
-                       
-                            <div>
-                                <span class="text-xl font-bold text-gray-800 ml-6">INUA</span> </br>
-                                 <span class="text-xs font-bold text-gray-800 ml-1">Collective Society</span>
-                            </div>
-                            
-                      
-
-                    </div>
-                </div>
-                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                    <a href="{{ url_for('users.home')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Home</a>
-                    <a href="{{ url_for('users.about')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
-                    <div class="relative group inline-block">
-                    
-                        <button id="" type="button" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium inline-flex items-center">
-                            Programs
-                            <ion-icon name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
-                           
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md invisible group-hover:visible transition-all duration-300 z-50">
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community Empowerment, Advocacy & Development</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Housing, Education, Jobs, immigration navigation</a>
-                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Youth Empowerment, Mentorship and Wellness</a>
-                            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Arts, Sports and Culture Development</a>
-                        </div>
-                        <!-- <a href="">Youth Empowerment, Mentorship and Wellness</a>
-                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
-                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
-                        <a href="">Youth Empowerment, Mentorship and Wellness</a>
-                        <a href="">Youth Empowerment, Mentorship and Wellness</a> -->
-                    </div>
-                    
-                    <a href="{{ url_for('users.blog')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Blog</a>
-                    <a href="{{ url_for('users.event')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Event</a>
-                    <a href="{{ url_for('users.gallery')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">Gallery</a>
-                    {% if current_user.is_authenticated %}
-            
-                        <a href="{{ url_for('users.log_out')}}" class="ml-4 donate-btn bg-cyan-200 hover:bg-blue-700 text-gray-400 px-6 py-2 rounded-full font-medium shadow-lg">Log Out</a>
-            
-                    {% endif %}
-                    
-                </div>
-               
-                 <div id="mobile-menu" class="absolute hidden md:hidden left-0 top-[100%] md:min-h-fit min-h-[60vh] w-full items-center">
-                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-sky-50 rounded-lg md:gap-8 items-center">
-                        <a href="{{ url_for('users.home')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Home</a>
-                        <a href="{{ url_for('users.about')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">About</a>
-                        <div>
-                            <button onclick="toggleDropdown()"  id="" type="button" class="w-full text-left text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center justify-between">
-                            Programs
-                            <ion-icon id="dropDown-arrow" name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
-                           
-                        </button>
-                        <div id="mobile-dropdown" class="ml-4 mt-1 space-y-1 hidden bg-[oldlace]">
-                            <a href="#" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Community Empowerment, Advocacy & Development</a>
-                            <a href="#" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Housing, Education, Jobs, immigration navigation</a>
-                            <a href="" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Youth Empowerment, Mentorship and Wellness</a>
-                            <a href="" class="block text-gray-700 hover:text-blue-500 px-3 py-1">Arts, Sports and Culture Development</a>
-                        </div>
-                        </div>
-                        <a href="{{ url_for('users.blog')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Blog</a>
-                        <a href="{{ url_for('users.event')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Event</a>
-                        <a href="{{ url_for('users.gallery')}}" class="block text-gray-800 hover:text-blue-600 px-3 py-2 text-base font-medium">Gallery</a>
-                    </div>
-                </div>
-                 <div class="mr-2 flex items-center  md:hidden"">
-                    <ion-icon id="mobile-menu-button" name="menu" class="text-3xl cursor-pointer"></ion-icon>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% include "navbar.html" %}
     
-   
     {% block content %}
     {% endblock %}
      <!-- Footer -->
@@ -186,7 +105,7 @@
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-                <p>© 2025 Inua Collective Society. All rights reserved</p>
+                <p>© 2025 Inua Collective <a href="{{ url_for("users.login")}}">Soc</a>iety. All rights reserved</p>
             </div>
         </div>
     </footer>

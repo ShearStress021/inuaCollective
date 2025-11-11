@@ -4,11 +4,27 @@ from .forms import (
     GalleryForm,
     LoginForm,
     ProgramForm,
+    SubProgramForm,
+    CommunityForm,
+    HousingForm,
+    SportArtForm,
+    YouthEmpowerMentForm,
     BlogForm,
     TestimonialForm,
 )
 from flask_login import current_user, login_user, login_required, logout_user
-from core.models import User, db, Program, Blog, Testimonial, Gallery
+from core.models import (
+    User, 
+    db, 
+    Blog, 
+    Program,
+    SubProgram,
+    Testimonial, 
+    Gallery,
+    Community,
+    Housing,
+    SportsArt,
+    YouthEmpowerMent)
 from core.extensions import bcrypt
 from .utils import create_path
 
@@ -56,25 +72,18 @@ def login():
     return render_template("login.html", title="login", form=form)
 
 
-@users.route("/admin/program", methods=["GET", "POST"])
+@users.route("/admin/create_program", methods=["GET", "POST"])
 @login_required
 def create_program():
     form = ProgramForm()
-    if request.method == "POST":
-        file = request.files["program_image"]
-        if file:
-            image_path = create_path("programs", file)
-            program = Program(
-                title=form.title.data,
-                content=form.content.data,
-                image_file=image_path,
-                user_id=current_user.id,
-            )
-            db.session.add(program)
-            db.session.commit()
-            return redirect(url_for("users.program"))
-
-    return render_template("create_program.html", form=form)
+    if form.validate_on_submit():
+        program = Program(
+            title=form.title.data,
+            user_id=current_user.id)
+        db.session.add(program)
+        db.session.commit()
+        return redirect(url_for('users.program'))
+    return render_template("create_program.html",form=form)
 
 
 @users.route("/admin/program/<int:program_id>/delete", methods=["POST"])
@@ -86,6 +95,114 @@ def delete_program(program_id):
     db.session.delete(program)
     db.session.commit()
     return redirect(url_for("users.program"))
+
+
+
+@users.route('/program/<int:program_id>/create_subprogram', methods=['GET', 'POST'])
+@login_required
+def create_subprogram(program_id):
+    # 1. Ensure the parent Program exists
+    program = Program.query.get_or_404(program_id)
+    form = SubProgramForm()
+    if request.method == "POST":
+        file = request.files['subprogram_image']
+        if file:
+            image_path = create_path("sub_program", file)
+            subprogram = SubProgram(
+                title = form.title.data,
+                content=form.content.data,
+                image_file=image_path,
+                program_id=program.id,
+                user_id=current_user.id
+            )
+            db.session.add(subprogram)
+            db.session.commit()
+            return redirect(url_for("users.program_detail"))
+    return render_template("create_subprogram.html", form=form, program=program)
+
+
+@users.route("/admin/community_program", methods=["GET", "POST"])
+@login_required
+def create_community_program():
+    form = CommunityForm()
+    if request.method == "POST":
+        file = request.files["subprogram_image"]
+        if file:
+            image_path = create_path("community",file)
+            program = Community(
+                    title = form.title.data,
+                    content=form.content.data,
+                    image_file=image_path,
+                      user_id=current_user.id,
+            )
+            db.session.add(program)
+            db.session.commit()
+            return redirect(url_for("users.community_program"))
+
+    return render_template("create_community.html", form=form)
+
+@users.route("/admin/youth_program", methods=["GET", "POST"])
+@login_required
+def create_youth_program():
+    form = YouthEmpowerMentForm()
+    if request.method == "POST":
+        file = request.files["subprogram_image"]
+        if file:
+            image_path = create_path("youth",file)
+            program = YouthEmpowerMent(
+                    title = form.title.data,
+                    content=form.content.data,
+                    image_file=image_path,
+                    user_id=current_user.id,
+            )
+            db.session.add(program)
+            db.session.commit()
+            return redirect(url_for("users.youth_program"))
+
+    return render_template("create_youth.html", form=form)
+
+@users.route("/admin/housing_program", methods=["GET", "POST"])
+@login_required
+def create_housing_program():
+    form = HousingForm()
+    if request.method == "POST":
+        file = request.files["subprogram_image"]
+        if file:
+            image_path = create_path("housing",file)
+            program = YouthEmpowerMent(
+                    title = form.title.data,
+                    content=form.content.data,
+                    image_file=image_path,
+                    user_id=current_user.id,
+                    
+                    
+            )
+            db.session.add(program)
+            db.session.commit()
+            return redirect(url_for("users.housing_program"))
+
+    return render_template("create_housing.html", form=form)
+
+@users.route("/admin/sports_program", methods=["GET", "POST"])
+@login_required
+def create_sports_program():
+    form = SportArtForm()
+    if request.method == "POST":
+        file = request.files["subprogram_image"]
+        if file:
+            image_path = create_path("sports",file)
+            program = YouthEmpowerMent(
+                    title = form.title.data,
+                    content=form.content.data,
+                    image_file=image_path,
+                     user_id=current_user.id,
+            )
+            db.session.add(program)
+            db.session.commit()
+            return redirect(url_for("users.sports_program"))
+
+    return render_template("create_sports.html", form=form)
+
 
 
 @users.route("/admin/blog", methods=["GET", "POST"])
@@ -191,15 +308,59 @@ def log_out():
 
 @users.route("/")
 def home():
-    program = Program.query.first()
+    program = YouthEmpowerMent.query.first()
     testimonials = Testimonial.query.all()
     return render_template("home.html", program=program, testimonials=testimonials)
 
 
-@users.route("/programs")
+# @users.context_processor
+# def inject_programs():
+#     """Make programs available to all templates"""
+#     programs = Program.query.all()
+#     return dict(programs=programs)
+
+@users.route('/programs')
 def program():
-    programs = Program.query.all()
-    return render_template("program.html", programs=programs)
+    # programs = Program.query.all()
+    return render_template('program.html')
+
+@users.route('/program/<int:program_id>')
+def program_detail(program_id):
+    program = Program.query.get_or_404(program_id)
+    return render_template('program_detail.html', program=program)
+
+@users.route("/youths")
+def youth_program():
+
+    programs = YouthEmpowerMent.query.all()
+    return render_template("youth.html", programs=programs)
+
+
+@users.route("/communitys")
+def community_program():
+
+    programs = Community.query.all()
+    return render_template("community.html", programs=programs)
+
+
+@users.route("/housing")
+def housing_program():
+
+    programs = Housing.query.all()
+    return render_template("housing.html", programs=programs)
+
+
+@users.route("/sports")
+def sports_program():
+
+    programs = SportsArt.query.all()
+    return render_template("sports.html", programs=programs)
+
+
+# @users.route("/programs/int:program_id/subprograms")
+# def sub_program(program_id):
+#     program = Program.query.get_or_404(program_id)
+#     return render_template('sub_program.html', program=program)
 
 
 @users.route("/gallery")
@@ -225,10 +386,6 @@ def event():
     return render_template("event.html")
 
 
-@users.route("/program/<int:program_id>")
-def program_detail(program_id):
-    program = Program.query.get_or_404(program_id)
-    return render_template("program_detail.html", program=program)
 
 
 @users.route("/admin/<int:blog_id>")
