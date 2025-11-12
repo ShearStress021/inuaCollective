@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="md:block md:w-1/2" data-aos="fade-left ">
-                     <img src="{{ url_for('static', filename='images/hero.jpg')}}" class="rounded-lg shadow-2xl">
+                     <img src="{{ url_for('static', filename='images/hero.jpg')}}" class="rounded-lg shadow-2xl object-cover w-full h-auto">
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 <div class="slider-wrapper">
                      <ul class="swiper-wrapper"> 
                         {% for testimonial in testimonials %} 
-                            <div class="select-none flex flex-col item-center p-[35px] relative text-center swiper-slide"> 
+                            <div class="select-none flex flex-col item-center p-[35px] relative text-center swiper-slide" data-aos="zoom-in"> 
                                 <img class="w-[180px] h-[180px] object-cover rounded-full mb-[50px] mx-auto" src="{{ url_for('static', filename=testimonial.profile_pic)}}" alt=""> 
                                 <h3 class="mb-4 text-[1.12rem]">{{ testimonial.name }}</h3> 
                                 <p class="leading-[25px]">{{ testimonial.content }}</p> 
