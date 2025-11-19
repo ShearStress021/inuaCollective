@@ -1,3 +1,5 @@
+import json
+from pathlib import Path
 from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from .forms import (
     RegistrationForm,
@@ -11,6 +13,7 @@ from .forms import (
     YouthEmpowerMentForm,
     BlogForm,
     TestimonialForm,
+    OurTeamForm
 )
 from flask_login import current_user, login_user, login_required, logout_user
 from core.models import (
@@ -20,6 +23,7 @@ from core.models import (
     Program,
     SubProgram,
     Testimonial, 
+    OurTeam,
     Gallery,
     Community,
     Housing,
@@ -33,6 +37,11 @@ from .utils import create_path
 users = Blueprint("users", __name__)
 
 # admin section
+
+PATH = Path().absolute()
+
+
+
 
 
 @users.route("/admin/register", methods=["GET", "POST"])
@@ -117,9 +126,18 @@ def create_subprogram(program_id):
             )
             db.session.add(subprogram)
             db.session.commit()
-            return redirect(url_for("users.program_detail"))
+            return redirect(url_for("users.program_detail" , program_id=program.id))
     return render_template("create_subprogram.html", form=form, program=program)
 
+@users.route("/admin/subprogram/<int:sub_program_id>/delete", methods=["POST"])
+@login_required
+def delete_subprogram(sub_program_id):
+    sub_program = SubProgram.query.get_or_404(sub_program_id)
+    if sub_program.user != current_user:
+        abort(403)
+    db.session.delete(sub_program)
+    db.session.commit()
+    return redirect(url_for("users.program"))
 
 @users.route("/admin/community_program", methods=["GET", "POST"])
 @login_required
@@ -141,25 +159,43 @@ def create_community_program():
 
     return render_template("create_community.html", form=form)
 
-@users.route("/admin/youth_program", methods=["GET", "POST"])
+
+
+@users.route("/admin/program_intro", methods=["GET", "POST"])
 @login_required
-def create_youth_program():
+def create_program_intro():
     form = YouthEmpowerMentForm()
     if request.method == "POST":
         file = request.files["subprogram_image"]
         if file:
             image_path = create_path("youth",file)
-            program = YouthEmpowerMent(
-                    title = form.title.data,
-                    content=form.content.data,
-                    image_file=image_path,
-                    user_id=current_user.id,
-            )
-            db.session.add(program)
-            db.session.commit()
-            return redirect(url_for("users.youth_program"))
+            
+            my_dict = {
+                "title" : form.title.data,
+                "content": form.content.data,
+                "image_file": image_path
+            }
+            with open('program_intro.json', 'w') as file:
+                json.dump(my_dict, file)
+           
+            return redirect(url_for("users.home"))
 
     return render_template("create_youth.html", form=form)
+
+
+@users.route("/admin/delete_program_intro", methods=["GET", "POST"])
+@login_required
+def delete_program_intro():
+    my_dict = {}
+    with open(PATH / "program_intro.json" , "w") as f:
+        json.dump(my_dict, f)
+    
+           
+    return redirect(url_for("users.home"))
+
+    
+
+
 
 @users.route("/admin/housing_program", methods=["GET", "POST"])
 @login_required
@@ -297,6 +333,47 @@ def delete_gallery(gallery_id):
     return redirect(url_for("users.gallery"))
 
 
+@users.route("/admin/ourteam", methods=["GET", "POST"])
+@login_required
+def create_team_member():
+    form = OurTeamForm()
+    if request.method == "POST":
+        file = request.files["profile_image"] 
+        if file:
+            image_path = create_path('team_member',file)
+            member = OurTeam(
+                name = form.name.data,
+                profile_pic = image_path,
+                content = form.content.data,
+                linkedin_url = form.linkedin_url.data,
+                twitter_url=form.twitter_url.data,
+                instagram_url = form.instagram_url.data,
+                email_url = form.email_url.data,
+                facebook_url = form.facebook_url.data,
+                user_id = current_user.id
+
+
+            )
+            db.session.add(member)
+            db.session.commit()
+            return redirect(url_for("users.about"))
+        
+    return render_template("create_our_team.html", form=form)
+
+
+@users.route("/admin/ourteam/<int:member_id>/delete", methods=["GET", "POST"])
+@login_required
+def delete_team_member(member_id):
+    member = OurTeam.query.get_or_404(member_id)
+    if member.user != current_user:
+        abort(403)
+    db.session.delete(member)
+    db.session.commit()
+    return redirect(url_for('users.about'))
+
+
+
+
 @users.route("/admin/logout")
 def log_out():
     logout_user()
@@ -308,7 +385,9 @@ def log_out():
 
 @users.route("/")
 def home():
-    program = YouthEmpowerMent.query.first()
+    
+    with open(PATH / "program_intro.json" , 'r') as f:
+        program = json.load(f)
     testimonials = Testimonial.query.all()
     return render_template("home.html", program=program, testimonials=testimonials)
 
@@ -329,11 +408,10 @@ def program_detail(program_id):
     program = Program.query.get_or_404(program_id)
     return render_template('program_detail.html', program=program)
 
-@users.route("/youths")
-def youth_program():
-
-    programs = YouthEmpowerMent.query.all()
-    return render_template("youth.html", programs=programs)
+@users.route("/subprogram/<int:sub_program_id>")
+def sub_program_detail(sub_program_id):
+    subprogram = SubProgram.query.get_or_404(sub_program_id)
+    return render_template("sub_program.html", subprogram=subprogram)
 
 
 @users.route("/communitys")
@@ -372,7 +450,8 @@ def gallery():
 
 @users.route("/about")
 def about():
-    return render_template("about.html")
+    members = OurTeam.query.all()
+    return render_template("about.html", members=members)
 
 
 @users.route("/blog")

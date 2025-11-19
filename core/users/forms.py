@@ -65,3 +65,27 @@ class TestimonialForm(FlaskForm):
 
 class GalleryForm(FlaskForm):
     submit = SubmitField("Post Gallery")
+
+
+# class OurTeam(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(255), unique=True, nullable=False)
+#     profile_pic = db.Column(db.String(255), unique=True, nullable=False)
+#     content = db.Column(db.Text,nullable=False)
+#     linkedin_url = db.Column(db.String(255), nullable=True)
+#     twitter_url = db.Column(db.String(255), nullable=True)
+#     instagram_url = db.Column(db.String(255), nullable=True)
+#     thread_url = db.Column(db.String(255), nullable=True)
+#     facebook_url = db.Column(db.String(255), nullable=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+class OurTeamForm(FlaskForm):
+    name = StringField("Full Name", validators=[DataRequired()])
+    content = TextAreaField("Profile Description", validators=[DataRequired()])
+    linkedin_url = StringField("LinkedIn url")
+    twitter_url = StringField("Twitter url")
+    instagram_url = StringField("Instagram url")
+    email_url = StringField("Email url")
+    facebook_url = StringField("Facebook url")
+    submit = SubmitField("Add Team Member")
+

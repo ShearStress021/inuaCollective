@@ -30,7 +30,7 @@ def create_app(app) -> None:
         programs = Program.query.order_by(Program.title).all()
         return dict(programs=programs)
 
-    app.jinja_env.filters["truncatewords"] = truncate_words
+    # app.jinja_env.filters["truncatewords"] = truncate_words
 
     return app
 

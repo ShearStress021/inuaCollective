@@ -15,27 +15,28 @@
                 </div>
             {% endif %}
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-6 md:gap-x-6 mt-[150px]">
-                 {% for program in program.subprograms %}
-                <div class="max-w-[420px] rounded-[10px] overflow-hidden group">
+                 {% for prog in program.subprograms %}
+                <div class="max-w-[420px] relative rounded-[10px] overflow-hidden group">
                     <div class="relative overflow-hidden" data-aos="fade-left">
-                        <img src="{{ url_for('static', filename=program.image_file)}}" class="group-hover:scale-110 transition-all w-full duration=500">
+                        <img src="{{ url_for('static', filename=prog.image_file)}}" class="hover:scale-110 transition-all duration=500">
 
                         <div class="bg-blue-100 absolute bottom-0 left-0 text-gray-800 text-base tracking-[2.24px]
-                        uppercase py-[6px] px-[18px]">{{ program.title }}</div>
+                        uppercase py-[6px] px-[18px]">{{ prog.title }}</div>
                     </div>
                     <div class="px-5 py-6" data-aos="fade-right">
     
-                        <p class="font-light text-gray-700">{{ program.content|truncatewords(20) }}
-                            <a class="italic underline text-[#4c5354] hover:bg-white hover:text-blue-600 transition">
-                                Read More
-                            </a>
+                        <p class="font-light text-gray-700 line-clamp-3">{{ prog.content }}
+                          
                         
                         </p>
+                        <a href="{{ url_for('users.sub_program_detail', sub_program_id=prog.id)}}" class="italic underline text-lg text-[#4c5354] hover:bg-white hover:text-blue-600 transition">
+                                Read More
+                        </a>
                        
                         
                     </div>
                     {% if current_user.is_authenticated %}
-                        <form class="absolute top-[1%] right-[1%]" action="" method="POST"> 
+                        <form class="absolute top-[1%] right-[1%]" action="{{ url_for('users.delete_subprogram', sub_program_id=prog.id)}}" method="POST"> 
                             <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
                         </form> 
                     {% endif %} 

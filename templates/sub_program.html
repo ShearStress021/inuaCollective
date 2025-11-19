@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+   
+   <!-- border-radius: 30px;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    overflow: hidden; -->
+<section class="px-[30px] bg-[#e3e5e6] flex md:flex-col items-center justify-center" >
+    <div class="max-w-[750px] bg-gray-100 box_shadow overflow-hidden border-1 rounded-lg py-8 mt-[120px] mb-4">
+        <div class=" grid grid-col items-center w-full">
+               <img src="{{ url_for('static', filename=subprogram.image_file)}}"  class="mb-8 ml-2 mr-3 overflow-hidden">
+               <h2 class="mx-2 text-center text-[3rem] text-gray-600 mb-8 leading-2">{{ subprogram.title }}</h2>
+               <p class="mx-2 text-[1.5rem] text-clip">{{ subprogram.content }}</p>
+        </div>
+        {% if current_user.is_authenticated %}
+            <form class="" action="{{ url_for('users.delete_subprogram', sub_program_id=subprogram.id)}}" method="POST"> 
+                <button type="submit" class="ml-2 mt-4 rounded-2xl px-6 py-4 text-[1.5rem] bg-red-500">
+                    Delete
+                </button> 
+            </form> 
+        {% endif %} 
+
+    </div>
+
+
+</section>
+
+
+{% endblock %}
