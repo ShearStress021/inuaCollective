@@ -2,12 +2,23 @@
 
 {% block content %}
 
-    <section id="home" class="hero-bg text-white pt-32 pb-20" id="vanta-globe">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between items-center gap-2">
+    <section id="home" class="hero-bg relative text-white pt-32 pb-20" id="vanta-globe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {% if current_user.is_authenticated %}
+            <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 left-[0%] hover:bg-[oldlace] hover:border-1 hover:text-gray-800" data-aos="fade-left">
+                <a class="" href="{{ url_for('users.create_title_intro')}}">create title intro</a>
+                <ion-icon name="add" class=""></ion-icon>
+            </div>
+        
+            <form class="absolute right-[1%]" action="{{ url_for('users.delete_title_intro')}}" method="POST"> 
+                <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
+            </form> 
+               
+            {% endif %}
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between items-center gap-2 mt-8">
                 <div class="md:w-1/2" data-aos="fade-right">
-                    <h1 class="text-2xl md:text-5xl font-bold leading-tight mb-6">INUA COLLECTIVE SOCIETY</h1>
-                    <p class="text-sm mb-8">Join us in our mission to empower communities and create sustainable change through education, healthcare, and economic development.</p>
+                    <h1 class="text-2xl md:text-5xl font-bold leading-tight mb-6">{{ info.title }}</h1>
+                    <p class="text-sm mb-8">{{ info.content }}</p>
                     <div class="flex space-x-4 items-center">
                         
                         <a href="{{ url_for('users.about')}}" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">
@@ -16,7 +27,7 @@
                     </div>
                 </div>
                 <div class="md:block md:w-1/2" data-aos="fade-left ">
-                     <img src="{{ url_for('static', filename='images/hero.jpg')}}" class="rounded-lg shadow-2xl object-cover w-full h-auto">
+                     <img src="{{ url_for('static', filename=info.image_file)}}" class="rounded-lg shadow-2xl object-cover w-full h-auto">
                 </div>
             </div>
         </div>

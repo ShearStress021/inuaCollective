@@ -193,6 +193,37 @@ def delete_program_intro():
            
     return redirect(url_for("users.home"))
 
+
+@users.route("/admin/create_title_intro", methods=["GET", "POST"])
+@login_required
+def create_title_intro():
+    form = YouthEmpowerMentForm()
+    if request.method == "POST":
+        file = request.files["subprogram_image"]
+        if file:
+            image_path = create_path("youth",file)
+            my_dict = {
+                "title" : form.title.data,
+                "content": form.content.data,
+                "image_file": image_path
+            }
+            with open('title_intro.json', 'w') as file:
+                json.dump(my_dict, file)
+           
+            return redirect(url_for("users.home"))
+
+    return render_template("create_title.html", form=form)
+
+
+@users.route("/admin/delete_title_intro", methods=["GET", "POST"])
+@login_required
+def delete_title_intro():
+    my_dict = {}
+    with open(PATH / "title_intro.json" , "w") as f:
+        json.dump(my_dict, f)
+    
+           
+    return redirect(url_for("users.home"))
     
 
 
@@ -388,8 +419,10 @@ def home():
     
     with open(PATH / "program_intro.json" , 'r') as f:
         program = json.load(f)
+    with open(PATH / "title_intro.json" , 'r') as f:
+        info = json.load(f)   
     testimonials = Testimonial.query.all()
-    return render_template("home.html", program=program, testimonials=testimonials)
+    return render_template("home.html", program=program, testimonials=testimonials, info=info)
 
 
 # @users.context_processor
@@ -421,18 +454,6 @@ def community_program():
     return render_template("community.html", programs=programs)
 
 
-@users.route("/housing")
-def housing_program():
-
-    programs = Housing.query.all()
-    return render_template("housing.html", programs=programs)
-
-
-@users.route("/sports")
-def sports_program():
-
-    programs = SportsArt.query.all()
-    return render_template("sports.html", programs=programs)
 
 
 # @users.route("/programs/int:program_id/subprograms")

@@ -1,39 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="header-top">
 
-</section>
-<section class="blog-section">
-    <h2 class="section-title">Our Blogs</h2>
-    {% if current_user.is_authenticated %}
-    <div class="create_blog">
-        <a href="{{ url_for('users.create_blog')}}">create Blog</a>
-        <i class="fa-solid fa-plus"></i>
-    </div>
-
-    {% endif %}
-    <div class="section-content">
-        <div class="blog-list">
+<section id="home" class="bg-gray-100 relative text-white pt-32 pb-20" id="vanta-globe">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Blogs</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 top-[1%] right-[2%] hover:bg-[oldlace] hover:border-1 hover:text-gray-800" data-aos="fade-left">
+                <a class="" href="{{ url_for('users.create_blog')}}">create blog</a>
+                <ion-icon name="add" class=""></ion-icon>
+            </div>
+        {% endif %}
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
             {% for blog in blogs %}
-            <div class="blog-item">
+             <div class="bg-gray-50 relative rounded-lg shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                
+                <img class="w-full h-auto object-cover overflow-hidden rounded-xl" src="{{ url_for('static', filename=blog.image_file)}}" alt="blog-image">
+                
+                <div class="p-2">
+                    <h3 class="text-xl  font-bold text-gray-800 mb-3 mt-4">{{ blog.title }}</h3>
+                    <p class="text-gray-600 mb-3 font-light text-gray-700 line-clamp-3">{{ blog.content }}</p>
 
-                <img src="{{ url_for('static', filename=blog.image_file)}}" alt="blog-image">
-                <div class="blog-text">
-                    <h3>{{ blog.title }}</h3>
-                    <p>{{ blog.content }}</p>
-                    <a href="{{ url_for('users.blog_detail', blog_id=blog.id)}}">Read More</a>
+                    <div class="flex items-center justify-between gap-8">
+                        <a href="{{ url_for('users.blog_detail', blog_id=blog.id)}}" class="px-4 cursor-pointer  py-2 text-gray-600 text-[1.1rem] bg-green-200 rounded-lg hover:bg-sky-100">Read more</a>
+                        {% if current_user.is_authenticated %}
+                        <form class="px-4  py-2 bg-red-200 rounded-lg hover:bg-red-800 hover:text-gray-50" action="{{ url_for('users.delete_blog', blog_id=blog.id) }}" method="POST"> 
+                            <button type="submit" class="text-[1.1rem] cursor-pointer text-gray-600"> Delete</button> 
+                        </form> 
+                    {% endif %} 
+                    </div>
 
-                </div>
-
-
-
-
+                </div>      
+                    <!-- <a href="#" class="text-blue-600 font-medium inline-flex items-center">Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a> -->
             </div>
             {% endfor %}
         </div>
-
     </div>
+   
 </section>
 
 {% endblock %}

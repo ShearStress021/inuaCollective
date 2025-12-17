@@ -1,28 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="header-top">
+<section class="px-[30px] bg-[#e3e5e6] flex md:flex-col items-center justify-center" >
+    <div class="max-w-[750px] bg-gray-100 box_shadow overflow-hidden border-1 rounded-lg py-8 mt-[120px] mb-4">
+        <div class=" grid grid-col items-center justify-center w-full">
+            <h2 class="mx-2 text-center text-[3rem] text-gray-600 mb-8">{{ blog.title }}</h2>   
+            <img src="{{ url_for('static', filename=blog.image_file)}}"  class="mx-auto w-full item-center">
+            
+               <p class="mx-2 mt-4 text-[1.5rem] text-clip">{{ blog.content }}</p>
+        </div>
+        {% if current_user.is_authenticated %}
+            <form class="" action="{{ url_for('users.delete_blog', blog_id=blog.id)}}" method="POST"> 
+                <button type="submit" class="ml-2 mt-4 rounded-2xl px-6 py-4 text-[1.5rem] bg-red-500">
+                    Delete
+                </button> 
+            </form> 
+        {% endif %} 
 
-</section>
-<section class="blog-detail">
-    <div class="blog-header blog-container">
-
-        <h2 class="blog-title">{{ blog.title }}</h2>
-        <img class="blog-img" src="{{ url_for('static', filename=blog.image_file)}}" alt="">
     </div>
 
-</section>
-<section class="blog-content blog-container">
-    <p class="blog-text">{{ blog.content }}</p>
+
 </section>
 
-{% if current_user.is_authenticated %}
-<div class="detail-buttons blog-container">
-
-    <form class="closeBtn" action="{{ url_for('users.delete_blog', blog_id=blog.id)}}" method="POST">
-        <button type="submit" class="close"> Delete</button>
-    </form>
-</div>
-{% endif %}
 
 {% endblock %}
