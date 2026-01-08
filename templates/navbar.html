@@ -22,11 +22,11 @@
                     <a href="{{ url_for('users.about')}}" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium">About</a>
                     <div class="relative group inline-block">
                     
-                        <a href="{{ url_for('users.program')}}" id="" type="button" class="text-gray-800 hover:text-blue-600 px-3 py-2 text-lg font-medium inline-flex items-center">
+                        <div href="{{ url_for('users.program')}}" id="" type="button" class="text-gray-800 px-3 py-2 text-lg font-medium inline-flex items-center">
                             Programs
                             <ion-icon name="chevron-down-outline" class="hover:rotate-180"></ion-icon>
                            
-                        </a>
+                        </div>
                         
                         <div class="absolute left-0 mt-2 w-65 bg-white shadow-lg rounded-md invisible group-hover:visible transition-all duration-300 z-50">
                             {% for program in programs %}

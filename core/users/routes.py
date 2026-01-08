@@ -133,11 +133,12 @@ def create_subprogram(program_id):
 @login_required
 def delete_subprogram(sub_program_id):
     sub_program = SubProgram.query.get_or_404(sub_program_id)
+    program_id = sub_program.program_id
     if sub_program.user != current_user:
         abort(403)
     db.session.delete(sub_program)
     db.session.commit()
-    return redirect(url_for("users.program"))
+    return redirect(url_for("users.program_detail",program_id=program_id))
 
 @users.route("/admin/community_program", methods=["GET", "POST"])
 @login_required

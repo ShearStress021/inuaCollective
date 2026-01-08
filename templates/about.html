@@ -37,26 +37,34 @@
                 <div class=" relative inset_shandow my-1 border-t flex flex-col md:flex-row bg-[#f6f1e9] rounded-lg p-8 hover:shadow-xl hover:translate-1 transition duration-300 " data-aos="flip-right">
                     
                     <div class="mt-8 mr-2">
-                        <img src="{{ url_for('static', filename=member.profile_pic) }}" alt="inua logo" class="w-62 h-38 mb-2 rounded-xl hover:scale-120">
-                        <div class="flex my-4">
+                        <img src="{{ url_for('static', filename=member.profile_pic) }}" alt="inua logo" class="w-48 h-48 mb-2 rounded-full hover:scale-120">
+                        <div class="flex my-4 ml-1">
                             {% if member.facebook_url %}
-                            <a href="{{ member.facebook_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="facebook" class="w-4 h-4 text-xs"></i>
+                            <a href="{{ member.facebook_url }}" class="border-2 shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
+                                <i data-feather="facebook" class="w-4 h-4 text-xs text-center"></i>
                             </a>
                             {% endif %}
 
+                            {% if member.twitter_url %}
                             <a href="{{ member.twitter_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
                                 <i data-feather="x" class="w-4 h-4 text-xs"></i>
                             </a>
+                            {% endif %}
+                            {% if member.instagram_url %}
                             <a href="{{ member.instagram_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
                                 <i data-feather="instagram" class="w-4 h-4 text-xs"></i>
                             </a>
+                            {% endif %}
+                            {% if member.linkedin_url %}
                              <a href="{{ member.linkedin_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
                                 <i data-feather="linkedin" class="w-4 h-4 text-xs"></i>
                             </a>
+                            {% endif %}
+                            {% if member.email_url %}
                              <a href="{{ member.email_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
                                 <i data-feather="mail" class="w-4 h-4 text-xs"></i>
                             </a>
+                            {% endif %}
                             
                            
                         </div>
