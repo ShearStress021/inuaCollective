@@ -1,26 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="px-[30px] bg-[#e3e5e6] flex md:flex-col items-center justify-center" >
-    <div class="max-w-[750px] bg-gray-100 box_shadow overflow-hidden border-1 rounded-lg py-8 mt-[120px] mb-4">
-        <div class=" grid grid-col items-center justify-center w-full">
-            <h2 class="mx-2 text-center text-[3rem] text-gray-600 mb-8">{{ blog.title }}</h2>   
-            <img src="{{ url_for('static', filename=blog.image_file)}}"  class="mx-auto w-full item-center">
-            
-               <p class="mx-2 mt-4 text-[1.5rem] text-clip">{{ blog.content }}</p>
+
+<section class="pt-32 pb-20 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+            <img class="w-full h-64 md:h-80 object-cover" src="{{ url_for('static', filename=blog.image_file)}}" alt="{{ blog.title }}" loading="lazy">
+            <div class="p-6 md:p-10">
+                <h1 class="text-2xl md:text-4xl font-bold text-gray-800 mb-6">{{ blog.title }}</h1>
+                <div class="prose max-w-none text-gray-700 leading-relaxed text-base md:text-lg">
+                    <p>{{ blog.content }}</p>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-10 pt-6 border-t border-gray-100">
+                    <a href="{{ url_for('users.blog')}}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition">
+                        <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>Back to Blog
+                    </a>
+                    {% if current_user.is_authenticated %}
+                    <form action="{{ url_for('users.delete_blog', blog_id=blog.id)}}" method="POST">
+                        <button type="submit" class="inline-flex items-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg transition font-medium">
+                            <i class="fa-solid fa-trash"></i>Delete Post
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        {% if current_user.is_authenticated %}
-            <form class="" action="{{ url_for('users.delete_blog', blog_id=blog.id)}}" method="POST"> 
-                <button type="submit" class="ml-2 mt-4 rounded-2xl px-6 py-4 text-[1.5rem] bg-red-500">
-                    Delete
-                </button> 
-            </form> 
-        {% endif %} 
-
     </div>
-
-
 </section>
-
 
 {% endblock %}

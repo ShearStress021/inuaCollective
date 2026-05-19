@@ -28,7 +28,8 @@ from core.models import (
     Community,
     Housing,
     SportsArt,
-    YouthEmpowerMent)
+    YouthEmpowerMent,
+    Event)
 from core.extensions import bcrypt
 from .utils import create_path
 
@@ -484,12 +485,13 @@ def blog():
 
 @users.route("/event")
 def event():
-    return render_template("event.html")
+    events = Event.query.all()
+    return render_template("event.html", events=events)
 
 
 
 
-@users.route("/admin/<int:blog_id>")
+@users.route("/blog/<int:blog_id>")
 def blog_detail(blog_id):
     blog = Blog.query.get_or_404(blog_id)
     return render_template("blog_detail.html", blog=blog)

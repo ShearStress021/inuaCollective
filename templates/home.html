@@ -2,8 +2,8 @@
 
 {% block content %}
 
-    <section id="home" class="hero-bg relative text-white pt-32 pb-20" id="vanta-globe">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section id="vanta-globe" class="hero-bg text-white pt-32 pb-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {% if current_user.is_authenticated %}
             <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 left-[0%] hover:bg-[oldlace] hover:border-1 hover:text-gray-800" data-aos="fade-left">
                 <a class="" href="{{ url_for('users.create_title_intro')}}">create title intro</a>
@@ -15,65 +15,87 @@
             </form> 
                
             {% endif %}
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between items-center gap-2 mt-8">
-                <div class="md:w-1/2" data-aos="fade-right">
-                    <h1 class="text-2xl md:text-5xl font-bold leading-tight mb-6">{{ info.title }}</h1>
-                    <p class="text-sm mb-8">{{ info.content }}</p>
+            <div class="flex flex-col md:flex-row md:items-center gap-8 lg:gap-16 min-h-[60vh]">
+                <div class="md:w-1/2 md:pr-4 lg:pr-8" data-aos="fade-right">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">{{ info.title }}</h1>
+                    <p class="text-base md:text-lg mb-8 leading-relaxed">{{ info.content }}</p>
                     <div class="flex space-x-4 items-center">
-                        
                         <a href="{{ url_for('users.about')}}" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">
                             Learn More
                         </a>
                     </div>
                 </div>
-                <div class="md:block md:w-1/2" data-aos="fade-left ">
-                     <img src="{{ url_for('static', filename=info.image_file)}}" class="rounded-lg shadow-2xl object-cover w-full h-auto">
+                <div class="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+                    <div class="overflow-hidden rounded-2xl shadow-2xl">
+                        <img src="{{ url_for('static', filename=info.image_file)}}" class="w-full h-full object-cover" alt="Inua Collective Society">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
+    <!-- Impact Statistics -->
+    <section class="py-16 bg-blue-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">What We Do</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            {% if current_user.is_authenticated %}
-            <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 right-[5%] hover:bg-[oldlace] hover:border-1 hover:text-gray-800" data-aos="fade-left">
-                <a class="" href="{{ url_for('users.create_program_intro')}}">create program intro</a>
-                <ion-icon name="add" class=""></ion-icon>
-            </div>
-        
-            <form class="absolute right-[2%]" action="{{ url_for('users.delete_program_intro')}}" method="POST"> 
-                <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
-            </form> 
-               
-            {% endif %}
-
-             
-            <div class="md:flex md:items-center md:justify-between gap-8">
-                <div class="md:block md:w-1/2 items-center" data-aos="fade-left">
-                     <img src="{{ url_for('static', filename=program.image_file)}}" class="rounded-lg shadow-2xl ml-2">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+                <div data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-4xl md:text-5xl font-bold mb-2">1000+</div>
+                    <div class="text-blue-100 text-lg">Community Members</div>
                 </div>
-                  <div class="md:w-1/2" data-aos="fade-right">
-                    <h1 class="text-gray-800 text-2xl md:text-2xl font-bold leading-tight mb-6">  {{ program.title }}</h1>
-                    <p class="text-lg text-gray-800 mb-8 line-clamp-4">{{ program.content }}</p>
-                    <div class="flex space-x-4">
-                        
-                        <a href="{{ url_for('users.program')}}" class="border-2 border-cyan-500 text-gray-800 px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">
-                            More Programs
-                        </a>
-                    </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl md:text-5xl font-bold mb-2">50+</div>
+                    <div class="text-blue-100 text-lg">Programs Run</div>
                 </div>
-                
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl md:text-5xl font-bold mb-2">10+</div>
+                    <div class="text-blue-100 text-lg">Communities Served</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl md:text-5xl font-bold mb-2">5+</div>
+                    <div class="text-blue-100 text-lg">Years of Service</div>
+                </div>
             </div>
         </div>
-    </section> -->
-   
+    </section>
+
+    <!-- What We Do -->
+    <section id="programs" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What We Do</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">We focus on these key areas to create maximum impact in the communities we serve.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for program in programs %}
+                <a href="{{ url_for('users.program_detail', program_id=program.id) }}" class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-8 group" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                    <div class="text-blue-600 mb-4">
+                        <i data-feather="{{ ['target', 'book-open', 'users', 'heart', 'globe', 'activity'][loop.index0 % 6] }}" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition">{{ program.title }}</h3>
+                    <p class="text-gray-600 line-clamp-3">{% if program.subprograms %}
+                        {{ program.subprograms[0].content|truncate(150) }}
+                    {% else %}
+                        Empowering communities through sustainable development programs.
+                    {% endif %}</p>
+                    <span class="inline-flex items-center text-blue-600 font-medium mt-4">
+                        Learn More <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </span>
+                </a>
+                {% endfor %}
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="{{ url_for('users.create_program')}}" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition">
+                    <i class="fa-solid fa-plus mr-2"></i>Add Program
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
 
     <!-- Testimonial -->
-    <section id="causes" class="py-20 bg-white">
+    <section id="testimonials" class="py-20 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Voices of Impact</h2>
@@ -85,7 +107,7 @@
                 <ion-icon name="add" class=""></ion-icon>
             </div>
             {% endif %}
-            <div class="slide-container swiper mt-[150px]"> 
+            <div class="slide-container swiper"> 
                 <div class="slider-wrapper">
                      <ul class="swiper-wrapper"> 
                         {% for testimonial in testimonials %} 
@@ -108,6 +130,67 @@
 
         </div>
     </section>
-    
+
+    <!-- Donate CTA -->
+    <section class="py-20 bg-[#f6f1e7]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Support Our Mission</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">Your support helps us continue empowering BIPOC communities through sustainable programs in education, housing, and economic development.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="donate-btn inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 shadow-lg">
+                        <i data-feather="heart" class="w-5 h-5 mr-2"></i>Donate Now
+                    </a>
+                    <a href="{{ url_for('users.about')}}" class="inline-flex items-center border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-600 hover:text-white transition">
+                        <i data-feather="info" class="w-5 h-5 mr-2"></i>Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Partners</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">We collaborate with organizations that share our vision for thriving communities.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center" data-aos="fade-up">
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+                <div class="grayscale hover:grayscale-0 transition duration-300 opacity-40 hover:opacity-100">
+                    <div class="h-16 flex items-center justify-center bg-gray-100 rounded-lg px-4">
+                        <span class="text-gray-400 text-sm font-medium">Partner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

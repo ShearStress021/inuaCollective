@@ -2,138 +2,137 @@
 
 {% block content %}
 
-<main class="about">
-   
-       <!-- Causes Section -->
-    <section id="causes" class="bg-sky-50 pt-32 pb-20">
+<main>
+    <!-- About Intro -->
+    <section class="bg-sky-50 pt-32 pb-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-                <!-- <p class="text-gray-600 max-w-2xl mx-auto mt-4">We focus on these key areas to create maximum impact in the communities we serve.</p> -->
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">INUA Collective Society brings together cultural competency, indigenous knowledge, and authentic insights to elevate lives of BIPOC communities and secure thriving futures.</p>
             </div>
-            <div class="w-1/2 mx-auto rounded-lg shadow-2xl">
-                <video class=" rounded-xl" src="{{  url_for('static', filename='video/newIntro.mp4')}}" controls autoplay></video>
-            </div>
-        </div>
-    </section>
-    <!-- Our Team -->
-        <!-- Causes Section -->
-    <section id="causes" class="py-20 bg-[#f6f1e7]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Amazing Team</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4"></p>
-            </div>
-             {% if current_user.is_authenticated %}
-                <div class="absolute rounded-lg bg-blue-500 pb-3 pt-3 pl-4 pr-4 right-[2%] hover:bg-transparent hover:border-2 hover:border-cyan-500" data-aos="fade-left">
-                    <a href="{{ url_for('users.create_team_member')}}">add Team Member</a>
-                    <ion-icon name="add" class=""></ion-icon>
-                </div>
-            {% endif %}
-            <div class="flex flex-col gap-4 pt-24">
-                {% for member in members %}
-                <div class=" relative inset_shandow my-1 border-t flex flex-col md:flex-row bg-[#f6f1e9] rounded-lg p-8 hover:shadow-xl hover:translate-1 transition duration-300 " data-aos="flip-right">
-                    
-                    <div class="mt-8 mr-2">
-                        <img src="{{ url_for('static', filename=member.profile_pic) }}" alt="inua logo" class="w-48 h-48 mb-2 rounded-full hover:scale-120">
-                        <div class="flex my-4 ml-1">
-                            {% if member.facebook_url %}
-                            <a href="{{ member.facebook_url }}" class="border-2 shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="facebook" class="w-4 h-4 text-xs text-center"></i>
-                            </a>
-                            {% endif %}
-
-                            {% if member.twitter_url %}
-                            <a href="{{ member.twitter_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="x" class="w-4 h-4 text-xs"></i>
-                            </a>
-                            {% endif %}
-                            {% if member.instagram_url %}
-                            <a href="{{ member.instagram_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="instagram" class="w-4 h-4 text-xs"></i>
-                            </a>
-                            {% endif %}
-                            {% if member.linkedin_url %}
-                             <a href="{{ member.linkedin_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="linkedin" class="w-4 h-4 text-xs"></i>
-                            </a>
-                            {% endif %}
-                            {% if member.email_url %}
-                             <a href="{{ member.email_url }}" class="border-2 text-center shadow-sm overflow-hidden  mr-1 rounded-full bg-lime-100 border-gray-50 transition p-3 hover:bg-transparent hover:text-gray-800 hover:border-none duration-300">
-                                <i data-feather="mail" class="w-4 h-4 text-xs"></i>
-                            </a>
-                            {% endif %}
-                            
-                           
-                        </div>
-                    </div>
-                    <div class="mt-8 mx-6 w-[80%]">
-                        <h1 class="text-4xl uppercase mb-4">{{ member.name }}</h1>
-                        <p class="text-lg text-gray-800 mb-8 line-clamp-3">{{ member.content }}</p>
-                    </div>
-
-                    {% if current_user.is_authenticated %}
-                    <form class="absolute right-[1%] top-[1%]" action="{{ url_for('users.delete_team_member', member_id=member.id)}}" method="POST"> 
-                        <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button> 
-                    </form>   
-                    {% endif %}     
-                </div>
-                {% endfor %}
-                
+            <div class="max-w-3xl mx-auto rounded-2xl shadow-2xl overflow-hidden" data-aos="fade-up">
+                <video class="w-full" src="{{ url_for('static', filename='video/newIntro.mp4')}}" controls autoplay></video>
             </div>
         </div>
     </section>
 
-     <!-- Causes Section -->
-    <section id="causes" class="py-20 bg-white">
+    <!-- Mission Vision Values -->
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Guiding</h2>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Guiding Principles</h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">We focus on these key areas to create maximum impact in the communities we serve.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-blue-600 mb-4">
+                <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#68a0cf]" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-[#68a0cf] mb-4">
                         <i data-feather="target" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Mission</h3>
-                    <p class="text-gray-600 mb-4">INUA Collective Society brings together cultural competency,
-                        indigenous knowledge, and authentic insights to elevate lives
-                        of BIPOC communities and secure thriving futures.</p>
-                    <!-- <a href="#" class="text-blue-600 font-medium inline-flex items-center">Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a> -->
+                    <p class="text-gray-600 leading-relaxed">INUA Collective Society brings together cultural competency, indigenous knowledge, and authentic insights to elevate lives of BIPOC communities and secure thriving futures.</p>
                 </div>
-                <div class="bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-blue-600 mb-4">
+                <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#f56c36]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-[#f56c36] mb-4">
                         <i data-feather="eye" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Vision</h3>
-                    <p class="text-gray-600 mb-4">More just, resilient and thriving BIPOC communities.</p>
-                    <!-- <a href="#" class="text-blue-600 font-medium inline-flex items-center">Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a> -->
+                    <p class="text-gray-600 leading-relaxed">More just, resilient and thriving BIPOC communities.</p>
                 </div>
-                <div class="bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-blue-600 mb-4">
+                <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-[#68a0cf]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-[#68a0cf] mb-4">
                         <i data-feather="heart" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Core Values</h3>
-                    <ul class="text-gray-600 mb-4">
-                        <li class="mb-2">innovation</li>
-                        <li class="mb-2">integrity</li>
-                        <li  class="mb-2">Dignity</li>
-                        <li class="mb-2">partenership & collaborations</li>
-                        <li class="mb-2">inclusiveness</li>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#68a0cf]"></span>Innovation</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#68a0cf]"></span>Integrity</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#68a0cf]"></span>Dignity</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#68a0cf]"></span>Partnership & Collaboration</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#68a0cf]"></span>Inclusiveness</li>
                     </ul>
-                    <!-- <p class="text-gray-600 mb-4">Microfinance, vocational training, and small business support to break the cycle of poverty.</p> -->
-                    <!-- <a href="#" class="text-blue-600 font-medium inline-flex items-center">Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a> -->
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Our Team -->
+    <section class="py-20 bg-[#f6f1e7]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Amazing Team</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Meet the dedicated people driving our mission forward.</p>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="absolute top-0 right-4 rounded-lg bg-blue-600 pb-3 pt-3 pl-4 pr-4 hover:bg-blue-700 transition" data-aos="fade-left">
+                <a href="{{ url_for('users.create_team_member')}}" class="text-white font-medium">Add Team Member</a>
+                <ion-icon name="add" class="text-white"></ion-icon>
+            </div>
+            {% endif %}
+            <div class="flex flex-col gap-6">
+                {% for member in members %}
+                <div class="relative bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 flex flex-col md:flex-row overflow-hidden" data-aos="flip-right">
+                    <div class="md:w-1/3 bg-gradient-to-br from-[#68a0cf] to-[#5790bf] flex items-center justify-center p-8">
+                        <img src="{{ url_for('static', filename=member.profile_pic) }}" alt="{{ member.name }}" class="w-40 h-40 object-cover rounded-full border-4 border-white shadow-lg">
+                    </div>
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">{{ member.name }}</h3>
+                                <div class="w-12 h-1 bg-[#68a0cf] rounded mb-4"></div>
+                            </div>
+                            {% if current_user.is_authenticated %}
+                            <form action="{{ url_for('users.delete_team_member', member_id=member.id)}}" method="POST">
+                                <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600 hover:text-red-800 transition"></button>
+                            </form>
+                            {% endif %}
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">{{ member.content }}</p>
+                        <div class="flex gap-2 mt-6">
+                            {% if member.facebook_url %}
+                            <a href="{{ member.facebook_url }}" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="facebook" class="w-4 h-4"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.twitter_url %}
+                            <a href="{{ member.twitter_url }}" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="twitter" class="w-4 h-4"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.instagram_url %}
+                            <a href="{{ member.instagram_url }}" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="instagram" class="w-4 h-4"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.linkedin_url %}
+                            <a href="{{ member.linkedin_url }}" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="linkedin" class="w-4 h-4"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.email_url %}
+                            <a href="{{ member.email_url }}" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="mail" class="w-4 h-4"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% if current_user.is_authenticated and not members %}
+            <div class="text-center mt-8">
+                <a href="{{ url_for('users.create_team_member')}}" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition">
+                    <i class="fa-solid fa-plus mr-2"></i>Add First Team Member
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-100">
+    <section class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
@@ -144,67 +143,65 @@
                 <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
                     <form class="space-y-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <input type="text" id="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="contact-name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input type="text" id="contact-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-[#68a0cf] focus:border-[#68a0cf]">
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="contact-email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-[#68a0cf] focus:border-[#68a0cf]">
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="contact-message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-[#68a0cf] focus:border-[#68a0cf]"></textarea>
                         </div>
-                        <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 donate-btn">
-                                Send Message
-                            </button>
-                        </div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 donate-btn transition">
+                            Send Message
+                        </button>
                     </form>
                 </div>
                 <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md h-full">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
                         <h3 class="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
                         <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i data-feather="map-pin" class="text-blue-600"></i>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#68a0cf]/10 text-[#68a0cf] shrink-0">
+                                    <i data-feather="map-pin" class="w-5 h-5"></i>
                                 </div>
-                                <div class="ml-3">
-                                    <p class="text-gray-700"> 9343 -149 Street<br>Surrey BC</p>
+                                <div>
+                                    <p class="text-gray-700">9343-149 Street<br>Surrey, BC</p>
                                 </div>
                             </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i data-feather="mail" class="text-blue-600"></i>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#68a0cf]/10 text-[#68a0cf] shrink-0">
+                                    <i data-feather="mail" class="w-5 h-5"></i>
                                 </div>
-                                <div class="ml-3">
+                                <div>
                                     <p class="text-gray-700">info@inuacollectivesociety.org</p>
                                 </div>
                             </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
-                                    <i data-feather="phone" class="text-blue-600"></i>
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#68a0cf]/10 text-[#68a0cf] shrink-0">
+                                    <i data-feather="phone" class="w-5 h-5"></i>
                                 </div>
-                                <div class="ml-3">
+                                <div>
                                     <p class="text-gray-700">+1 (236) 558-8300</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-8">
-                            <h4 class="text-lg font-medium text-gray-800 mb-4">Follow Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-blue-600 hover:text-blue-800">
-                                    <i data-feather="facebook" class="w-6 h-6"></i>
+                        <div class="mt-8 pt-6 border-t border-gray-100">
+                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Follow Us</h4>
+                            <div class="flex space-x-3">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                    <i data-feather="facebook" class="w-4 h-4"></i>
                                 </a>
-                                <a href="#" class="text-blue-400 hover:text-blue-600">
-                                    <i data-feather="twitter" class="w-6 h-6"></i>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                    <i data-feather="twitter" class="w-4 h-4"></i>
                                 </a>
-                                <a href="#" class="text-pink-600 hover:text-pink-800">
-                                    <i data-feather="instagram" class="w-6 h-6"></i>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#f56c36] hover:text-white transition">
+                                    <i data-feather="instagram" class="w-4 h-4"></i>
                                 </a>
-                                <a href="#" class="text-blue-700 hover:text-blue-900">
-                                    <i data-feather="linkedin" class="w-6 h-6"></i>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-[#68a0cf] hover:text-white transition">
+                                    <i data-feather="linkedin" class="w-4 h-4"></i>
                                 </a>
                             </div>
                         </div>
@@ -214,7 +211,24 @@
         </div>
     </section>
 
-    
+    <!-- CTA Banner -->
+    <section class="py-20 bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-white mb-4">Ready to Make a Difference?</h2>
+                <div class="w-20 h-1 bg-white mx-auto mb-6"></div>
+                <p class="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">Join us in empowering communities and creating lasting change.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 shadow-lg transition">
+                        <i data-feather="heart" class="w-5 h-5 mr-2"></i>Donate Now
+                    </a>
+                    <a href="#" class="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition">
+                        <i data-feather="users" class="w-5 h-5 mr-2"></i>Volunteer With Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main>
 

@@ -1,7 +1,44 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<section class="header-top">
 
+<section class="pt-32 pb-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto mt-4">Stay connected with our community events and activities.</p>
+        </div>
+        {% if current_user.is_authenticated %}
+        <div class="text-center mb-8" data-aos="fade-up">
+            <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition">
+                <i class="fa-solid fa-plus mr-2"></i>Add Event
+            </a>
+        </div>
+        {% endif %}
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for event in events %}
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <img class="w-full h-48 object-cover" src="{{ url_for('static', filename=event.image_file)}}" alt="Event image">
+                <div class="p-6">
+                    <a href="{{ event.link }}" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-700" target="_blank">
+                        View Event Details <i data-feather="external-link" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+                {% if current_user.is_authenticated %}
+                <form class="px-6 pb-4" action="#" method="POST">
+                    <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button>
+                </form>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="col-span-full text-center py-20" data-aos="fade-up">
+                <i data-feather="calendar" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                <p class="text-gray-500 text-lg">No events currently scheduled. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
+
 {% endblock %}

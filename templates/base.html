@@ -44,7 +44,7 @@
   
     <style>
       .hero-bg {
-            background: linear-gradient(45deg,  #eb764f 3%,#7fb5e0 23%);
+            background: #68a0cf;
         }
         .donate-btn {
             transition: all 0.3s ease;
@@ -69,49 +69,82 @@
      <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:justify-between md:items-center">
-                <div class="mb-8 md:mb-0">
-                    <div class="flex items-center">
-                        <!-- <i data-feather="heart" class="text-red-500 mr-2"></i> -->
-                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="inua logo" class="rounded-lg w-8 h-8  mr-2">
+            <div class="md:flex md:justify-between md:items-start">
+                <div class="mb-10 md:mb-0 md:w-1/3">
+                    <div class="flex items-center gap-3 mb-4">
+                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Inua Collective Society logo" class="rounded-lg w-10 h-10">
                         <span class="text-xl font-bold">Inua Collective Society</span>
                     </div>
-                    <p class="mt-4 text-gray-400 max-w-md">Empowering communities through sustainable development programs in education and economic empowerment.</p>
+                    <p class="text-gray-400 leading-relaxed">Empowering BIPOC communities through sustainable development programs in education, housing, and economic empowerment.</p>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-3">Follow Us</h4>
+                        <div class="flex space-x-3">
+                            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 text-gray-400 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="facebook" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 text-gray-400 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="twitter" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 text-gray-400 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="instagram" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 text-gray-400 hover:bg-[#68a0cf] hover:text-white transition">
+                                <i data-feather="linkedin" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:w-2/3 md:pl-12 lg:pl-20">
                     <div>
                         <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
-                            <li><a href="#Program" class="text-gray-400 hover:text-white">Programs</a></li>
-                            <li><a href="#impact" class="text-gray-400 hover:text-white">Blog</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white">Event</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <ul class="space-y-2.5">
+                            <li><a href="{{ url_for('users.home')}}" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="{{ url_for('users.about')}}" class="text-gray-400 hover:text-white transition">About</a></li>
+                            <li><a href="{{ url_for('users.program')}}" class="text-gray-400 hover:text-white transition">Programs</a></li>
+                            <li><a href="{{ url_for('users.blog')}}" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                            <li><a href="{{ url_for('users.event')}}" class="text-gray-400 hover:text-white transition">Events</a></li>
+                            <li><a href="{{ url_for('users.gallery')}}" class="text-gray-400 hover:text-white transition">Gallery</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Legal</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white">Financial Reports</a></li>
+                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Contact</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-gray-400">
+                                <i data-feather="map-pin" class="w-4 h-4 mt-0.5 shrink-0 text-[#68a0cf]"></i>
+                                <span>9343-149 Street<br>Surrey, BC</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-400">
+                                <i data-feather="mail" class="w-4 h-4 shrink-0 text-[#68a0cf]"></i>
+                                <a href="mailto:info@inuacollectivesociety.org" class="hover:text-white transition">info@inuacollectivesociety.org</a>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-400">
+                                <i data-feather="phone" class="w-4 h-4 shrink-0 text-[#68a0cf]"></i>
+                                <a href="tel:+12365588300" class="hover:text-white transition">+1 (236) 558-8300</a>
+                            </li>
                         </ul>
                     </div>
                     <div>
                         <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Subscribe</h3>
-                        <p class="text-gray-400 mb-4">Stay updated with our latest news and stories.</p>
+                        <p class="text-gray-400 mb-4 text-sm">Stay updated with our latest news and stories.</p>
                         <form class="flex">
-                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full">
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md">
+                            <input type="email" placeholder="Your email" class="px-3 py-2 rounded-l-md focus:outline-none text-gray-800 w-full text-sm">
+                            <button type="submit" class="bg-[#68a0cf] hover:bg-[#5790bf] px-3 py-2 rounded-r-md transition">
                                 <i data-feather="send" class="w-4 h-4"></i>
                             </button>
                         </form>
+                        <p class="text-gray-500 text-xs mt-2">Coming soon — we'll notify you when we launch.</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-                <p>© 2025 Inua Collective <a href="{{ url_for("users.login")}}">Soc</a>iety. All rights reserved</p>
+            <div class="mt-10 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-2 text-gray-400 text-sm">
+                <p>© 2026 Inua Collective Society. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('users.login')}}" class="hover:text-white transition">Admin</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </footer>

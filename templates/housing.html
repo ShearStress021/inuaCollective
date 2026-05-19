@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <section id="home"  class="text-white pt-32 pb-20 bg-gray-100" id="vanta-globe">
+  <section id="home"  class="text-white pt-32 pb-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
              <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Housing, Education, Jobs,
@@ -19,19 +19,14 @@ immigration navigation.</h2>
                  {% for program in programs %}
                 <div class="max-w-[420px] rounded-[10px] overflow-hidden group">
                     <div class="relative overflow-hidden" data-aos="fade-left">
-                        <img src="{{ url_for('static', filename=program.image_file)}}" class="group-hover:scale-110 transition-all w-full duration=500">
+                        <img src="{{ url_for('static', filename=program.image_file)}}" class="group-hover:scale-110 transition-all w-full duration-500">
 
                         <div class="bg-blue-100 absolute bottom-0 left-0 text-gray-800 text-base tracking-[2.24px]
                         uppercase py-[6px] px-[18px]">{{ program.title }}</div>
                     </div>
                     <div class="px-5 py-6" data-aos="fade-right">
     
-                        <p class="font-light text-gray-700">{{ program.content|truncatewords(20) }}
-                            <a class="italic underline text-[#4c5354] hover:bg-white hover:text-blue-600 transition">
-                                Read More
-                            </a>
-                        
-                        </p>
+                        <p class="font-light text-gray-700">{{ program.content|truncatewords(20) }}</p>
                        
                         
                     </div>

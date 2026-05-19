@@ -2,42 +2,53 @@
 
 {% block content %}
 
-    
-    <section id="causes" class="pt-32 pb-20 bg-white">
+    <section class="pt-32 pb-20 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Gallery</h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-                <!-- <p class="text-gray-600 max-w-2xl mx-auto mt-4">We focus on these key areas to create maximum impact in the communities we serve.</p> -->
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Moments captured from our programs and community events.</p>
             </div>
             {% if current_user.is_authenticated %}
-                <div class="absolute rounded-xl bg-blue-200 pb-3 pt-3 pl-2 pr-2 right-[2%] top-[10%] hover:bg-[oldlace] mt-16" data-aos="fade-up" data-aos-delay="100">
-                    <a href="{{ url_for('users.create_gallery')}}">create gallery</a>
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
+            <div class="text-center mb-8" data-aos="fade-up">
+                <a href="{{ url_for('users.create_gallery')}}" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-md">
+                    <i class="fa-solid fa-plus mr-2"></i>Add Photo
+                </a>
+            </div>
             {% endif %}
-            <div class="grid md:grid-cols-3 gap-8">
-               
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {% for gallery in gallerys %}
-                <div class="bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <img class="w-full rounded-xl" src="{{ url_for('static', filename=gallery.image_file)}}" alt="Gallery">
+                <a href="{{ url_for('static', filename=gallery.image_file)}}" target="_blank" class="group relative bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                    <div class="overflow-hidden">
+                        <img class="w-full h-60 object-cover group-hover:scale-110 transition-all duration-500" src="{{ url_for('static', filename=gallery.image_file)}}" alt="Gallery image {{ loop.index }}" loading="lazy">
+                    </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                        <span class="text-white opacity-0 group-hover:opacity-100 transition duration-300 bg-black/50 rounded-full p-3">
+                            <i data-feather="search" class="w-5 h-5"></i>
+                        </span>
+                    </div>
                     {% if current_user.is_authenticated %}
-                    <form class="absolute top-[2%] right-[2%] rounded-full" action="{{ url_for('users.delete_gallery', gallery_id=gallery.id)}}"
-                        method="POST">
-                        <button type="submit" class="fa-solid fa-trash text-[1.5rem] text-red-600"></button>
+                    <form class="absolute top-2 right-2" action="{{ url_for('users.delete_gallery', gallery_id=gallery.id)}}" method="POST">
+                        <button type="submit" class="w-9 h-9 flex items-center justify-center bg-white/80 hover:bg-red-50 rounded-full shadow transition">
+                            <i class="fa-solid fa-trash text-sm text-red-600"></i>
+                        </button>
                     </form>
                     {% endif %}
-
+                </a>
+                {% else %}
+                <div class="col-span-full text-center py-20" data-aos="fade-up">
+                    <i data-feather="image" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                    <p class="text-gray-500 text-lg mb-2">No photos in the gallery yet.</p>
+                    <p class="text-gray-400">Check back soon for updates from our programs.</p>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('users.create_gallery')}}" class="inline-flex items-center mt-6 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition">
+                        <i class="fa-solid fa-plus mr-2"></i>Upload First Photo
+                    </a>
+                    {% endif %}
                 </div>
                 {% endfor %}
-
-                
             </div>
         </div>
     </section>
-    
-
-
 
 {% endblock %}
